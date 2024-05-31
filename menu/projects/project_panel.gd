@@ -19,6 +19,8 @@ var selected_project:Project:
 		thumbnail.texture = selected_project.thumbnail
 
 func _ready():
+	selected_project = ProjectsJsonAPI.projects[0]
+	
 	GlobalSignalHandler.project_selected.connect(func(project):
 		selected_project = project
 	)
