@@ -19,6 +19,7 @@ var project_folder:String = "":
 		return path.erase(path.find("Projects\\"), "Projects\\".length())
 	set(value):
 		path = "Projects\\" + value
+		URI = "ms-appdata:///local/Projects/" + value + "/Thumbnail.png"
 		project_folder = value
 
 var absolute_project_folder:String:
@@ -76,3 +77,17 @@ func get_thumbnail_path():
 		image_path = ProjectsJsonAPI.PROJECTS_FOLDER_PATH.path_join(uri_path)
 	
 	return image_path
+
+func to_dict():
+	return {
+		"Id": ID,
+		"SourceId": source_ID,
+		"Name": name,
+		"URI": URI,
+		"DateTime": date_time,
+		"Path": path,
+		"SourceFilePath": source_file_path,
+		"Version": version,
+		"IsRecovered": is_recovered,
+		"IsPreviouslySaved": is_previously_saved
+	}
