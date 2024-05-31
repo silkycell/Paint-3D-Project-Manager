@@ -37,7 +37,7 @@ func _init(project_data:Dictionary):
 	is_previously_saved = bool(project_data.get("IsPreviouslySaved"))
 	
 	thumbnail_thread = Thread.new()
-	thumbnail_thread.start(_load_thumbnail.bind(get_thumbnail_path()))
+	thumbnail_thread.start(_load_thumbnail.bind(get_thumbnail_path()), Thread.PRIORITY_LOW)
 	
 	thumbnail_finished_loading.connect(func(thumbnail_texture):
 		thumbnail = thumbnail_texture
