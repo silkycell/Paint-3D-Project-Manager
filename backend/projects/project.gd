@@ -21,6 +21,10 @@ var project_folder:String = "":
 		path = "Projects\\" + value
 		project_folder = value
 
+var absolute_project_folder:String:
+	get:
+		return ProjectsJsonAPI.PROJECTS_FOLDER_PATH.path_join(project_folder)
+
 var thumbnail_thread:Thread
 var thumbnail:Texture2D = null
 
@@ -66,7 +70,7 @@ func get_thumbnail_path():
 	var image_path:String = ""
 	
 	if URI.find("ms-appdata:///local/Projects/") == -1:
-		image_path = ProjectsJsonAPI.PROJECTS_FOLDER_PATH.path_join(project_folder.path_join("Thumbnail.png"))
+		image_path = absolute_project_folder.path_join("Thumbnail.png")
 	else:
 		var uri_path = URI.erase(URI.find("ms-appdata:///local/Projects/"), "ms-appdata:///local/Projects/".length())
 		image_path = ProjectsJsonAPI.PROJECTS_FOLDER_PATH.path_join(uri_path)
