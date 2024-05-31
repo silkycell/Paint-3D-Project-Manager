@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ekevq728ude"]
+
+[ext_resource type="Script" path="res://menu/projects/project_button.gd" id="1_ocnbv"]
+[ext_resource type="Texture2D" uid="uid://bhhq4f6xu4ldc" path="res://menu/projects/thumbnail_loading.png" id="2_mpr2i"]
+
+[node name="ProjectButton" type="Button" node_paths=PackedStringArray("label", "thumbnail")]
+custom_minimum_size = Vector2(232, 70)
+anchors_preset = -1
+anchor_right = 0.201
+anchor_bottom = 0.108
+offset_right = 0.447998
+offset_bottom = 0.0159988
+clip_text = true
+script = ExtResource("1_ocnbv")
+label = NodePath("Label")
+thumbnail = NodePath("Thumbnail")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.408
+anchor_top = 0.278
+anchor_right = 1.0
+anchor_bottom = 0.722
+offset_left = 0.0239944
+offset_top = -1.024
+offset_right = -7.0
+offset_bottom = 0.0239944
+grow_horizontal = 2
+grow_vertical = 2
+text = "wwwwwwwwwwwwwwwwwwwwww"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Thumbnail" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.231778
+anchor_right = 0.5
+anchor_bottom = 0.759
+offset_left = 6.0
+offset_top = -0.0320015
+offset_right = -29.0
+offset_bottom = 0.0279999
+grow_vertical = 2
+texture = ExtResource("2_mpr2i")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
