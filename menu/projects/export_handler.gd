@@ -36,12 +36,11 @@ func _on_export_dialog_file_selected(path:String):
 		replace_file_confirmation.dialog_text = REPLACETEXT % path
 		replace_file_confirmation.visible = true
 		
-		replace_file_confirmation.canceled.connect(func():
+		var choice = await replace_file_confirmation.choice_selected
+		
+		if choice == "cancel":
 			exit_export()
 			should_continue = false
-		)
-		
-		await replace_file_confirmation.confirmed
 	
 	if should_continue:
 		if export_thread != null: export_thread.wait_to_finish()

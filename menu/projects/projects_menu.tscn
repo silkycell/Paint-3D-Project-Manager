@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=15 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
 [ext_resource type="Script" path="res://menu/projects/project_panel.gd" id="2_qt3du"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://n3lfb6rm53uc" path="res://menu/projects/labelled_progress_bar.tscn" id="7_asmc7"]
 [ext_resource type="Script" path="res://menu/projects/import_handler.gd" id="8_gtaak"]
 [ext_resource type="Script" path="res://menu/projects/import_progress_panel.gd" id="10_1db86"]
+[ext_resource type="Script" path="res://menu/projects/custom_confirmation_dialog.gd" id="10_wty4p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_conew"]
 font_size = 40
@@ -129,6 +130,16 @@ access = 2
 filters = PackedStringArray("*.p3dpj;Paint 3D Project File")
 use_native_dialog = true
 
+[node name="ReplaceFileConfirmation" type="ConfirmationDialog" parent="ExportHandler"]
+title = "Confirm Export Location"
+initial_position = 1
+size = Vector2i(501, 106)
+ok_button_text = "Yes"
+dialog_text = "The file \"%s\" already exists.
+Do you want to replace it?"
+cancel_button_text = "No"
+script = ExtResource("10_wty4p")
+
 [node name="ExportProgressPanel" type="Panel" parent="ExportHandler"]
 layout_mode = 1
 anchors_preset = -1
@@ -169,15 +180,6 @@ offset_left = 98.0
 offset_top = 0.249969
 offset_right = -98.0
 offset_bottom = -0.250031
-
-[node name="ReplaceFileConfirmation" type="ConfirmationDialog" parent="ExportHandler"]
-title = "Confirm Export Location"
-initial_position = 1
-size = Vector2i(501, 106)
-ok_button_text = "Yes"
-dialog_text = "The file \"%s\" already exists.
-Do you want to replace it?"
-cancel_button_text = "No"
 
 [node name="ImportHandler" type="Control" parent="."]
 unique_name_in_owner = true
