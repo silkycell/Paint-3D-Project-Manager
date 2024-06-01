@@ -52,7 +52,7 @@ func _on_export_dialog_file_selected(path:String):
 		exit_export()
 
 func export_project(project:Project, save_path:String):
-	call_deferred("emit_signal", "export_thread_update", "start", {})
+	call_deferred("emit_signal", "export_thread_update", "start", {"project": project.name})
 	var project_path = project.absolute_project_folder
 	var files_to_write = {}
 	
@@ -73,7 +73,8 @@ func export_project(project:Project, save_path:String):
 			if !dir_access.current_is_dir():
 				count += 1
 				call_deferred("emit_signal", "export_thread_update", "index", {
-					"count" = count
+					"count" = count,
+					"project" = project.name
 				})
 				files_to_write["project/".path_join(file_name)] = FileAccess.get_file_as_bytes(project_path.path_join(file_name))
 			
@@ -96,7 +97,8 @@ func export_project(project:Project, save_path:String):
 		call_deferred("emit_signal", "export_thread_update", "write", {
 			"size": files_to_write.size(),
 			"idx": idx,
-			"file": key
+			"file": key,
+			"project": project.name
 		})
 		
 		zip_packer.start_file(key)

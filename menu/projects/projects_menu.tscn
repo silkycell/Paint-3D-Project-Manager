@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=18 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
 [ext_resource type="Script" path="res://menu/projects/project_panel.gd" id="2_qt3du"]
@@ -20,6 +20,15 @@ bg_color = Color(0.255659, 0.255659, 0.255659, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dxb0w"]
 font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_5uvwi"]
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_rn4k5"]
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_rfh4t"]
+font_size = 10
 
 [node name="ProjectsMenu" type="Control"]
 layout_mode = 3
@@ -155,6 +164,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qu2ph")
 script = ExtResource("6_5afnv")
 
 [node name="InfoLabel" type="Label" parent="ExportHandler/ExportProgressPanel"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.357
@@ -168,6 +178,26 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Nodes_18446744069414587421_SurfaceAlignmentProvider.bin"
 label_settings = SubResource("LabelSettings_dxb0w")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="TaskLabel" type="Label" parent="ExportHandler/ExportProgressPanel"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.596
+offset_left = 8.0
+offset_top = 27.0
+offset_right = -10.0
+offset_bottom = 0.119995
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nodes_18446744069414587421_SurfaceAlignmentProvider.bin"
+label_settings = SubResource("LabelSettings_5uvwi")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -225,6 +255,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_qu2ph")
 script = ExtResource("10_1db86")
 
 [node name="InfoLabel" type="Label" parent="ImportHandler/ImportProgressPanel"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.357
@@ -237,7 +268,27 @@ offset_bottom = 0.119995
 grow_horizontal = 2
 grow_vertical = 2
 text = "Nodes_18446744069414587421_SurfaceAlignmentProvider.bin"
-label_settings = SubResource("LabelSettings_dxb0w")
+label_settings = SubResource("LabelSettings_rn4k5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="TaskLabel" type="Label" parent="ImportHandler/ImportProgressPanel"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.596
+offset_left = 8.0
+offset_top = 27.0
+offset_right = -10.0
+offset_bottom = 0.119995
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nodes_18446744069414587421_SurfaceAlignmentProvider.bin"
+label_settings = SubResource("LabelSettings_rfh4t")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

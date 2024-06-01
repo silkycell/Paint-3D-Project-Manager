@@ -79,7 +79,7 @@ func _on_import_dialog_file_selected(path:String):
 		exit_import()
 
 func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictionary):
-	call_deferred("emit_signal", "import_thread_update", "start", {})
+	call_deferred("emit_signal", "import_thread_update", "start", {"project": data_json["project_data"]["Name"]})
 	
 	var project_folder_name = data_json["project_data"]["Path"]
 	project_folder_name = project_folder_name.erase(project_folder_name.find("Projects\\"), "Projects\\".length())
@@ -87,7 +87,7 @@ func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictiona
 	var project_location = projects_folder.path_join(project_folder_name)
 	
 	if DirAccess.dir_exists_absolute(project_location):
-		call_deferred("emit_signal", "import_thread_update", "delete", {})
+		call_deferred("emit_signal", "import_thread_update", "delete", {"project": data_json["project_data"]["Name"]})
 		DirAccess.remove_absolute(project_location)
 	
 	DirAccess.make_dir_recursive_absolute(project_location)
@@ -102,7 +102,8 @@ func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictiona
 		call_deferred("emit_signal", "import_thread_update", "import", {
 			"size": reader.get_files().size(),
 			"idx": idx,
-			"file": file_name
+			"file": file_name,
+			"project": data_json["project_data"]["Name"]
 		})
 		
 		file_access.store_buffer(reader.read_file(zip_file_name))
