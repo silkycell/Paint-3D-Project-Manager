@@ -60,7 +60,7 @@ func _load_thumbnail(thumbnail_path):
 	var error = image.load_png_from_buffer(buffer)
 	
 	if error != OK:
-		print("Error loading ", thumbnail_path, " E:", error)
+		push_warning("Unable to load ", thumbnail_path, " Error Code:", error)
 		call_deferred("emit_signal", "thumbnail_finished_loading", THUMBNAIL_MISSING)
 		return
 	

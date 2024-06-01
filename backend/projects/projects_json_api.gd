@@ -22,7 +22,7 @@ func load_json():
 			for project_data in parsed_json:
 				projects.append(Project.new(project_data))
 		else:
-			push_error("Unexpected data ", typeof(parsed_json))
+			push_error("Unexpected data ", typeof(parsed_json), " ", parsed_json)
 	else:
 		push_error("JSON Parse Error: ", projects_json.get_error_message(), " at line ", projects_json.get_error_line())
 	

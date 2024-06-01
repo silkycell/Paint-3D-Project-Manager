@@ -79,17 +79,17 @@ func export_project(project:Project, save_path:String):
 			
 			file_name = dir_access.get_next()
 	else:
-		push_error("An error occured while trying to open ", project_path)
+		push_error("Error accessing ", project_path, " Error Code:", DirAccess.get_open_error())
 		return
 	
 	dir_access.list_dir_end()
 	
 	var zip_packer := ZIPPacker.new()
-	var err := zip_packer.open(save_path, ZIPPacker.APPEND_CREATE)
+	var error := zip_packer.open(save_path, ZIPPacker.APPEND_CREATE)
 	
-	if err != OK:
-		push_error(err)
-		return err
+	if error != OK:
+		push_error("Error creating Zip at ", save_path, " Error Code:", error)
+		return error
 	
 	var idx = 0
 	for key in files_to_write.keys():
