@@ -6,15 +6,13 @@ extends Panel
 func _ready():
 	hide()
 
-func _on_export_handler_export_thread_update(type, data):
+func _on_import_handler_import_thread_update(type, data):
 	match type:
 		"start":
-			info_label.text = "Starting Export..."
+			info_label.text = "Starting Import..."
 			labelled_progress_bar.hide()
 			show()
-		"index":
-			info_label.text = "Indexing Files... " + str(data.count)
-		"write":
+		"import":
 			labelled_progress_bar.show()
 			
 			labelled_progress_bar.max_value = data.size

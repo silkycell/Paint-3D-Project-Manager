@@ -8,9 +8,9 @@ var PROJECTS_JSON_PATH = PROJECTS_FOLDER_PATH.path_join("Projects.json")
 var projects:Array[Project] = []
 
 func _ready():
-	_load_json()
+	load_json()
 
-func _load_json():
+func load_json():
 	var file_access = FileAccess.open(PROJECTS_JSON_PATH, FileAccess.READ)
 	var projects_json_string = file_access.get_as_text()
 	
@@ -25,3 +25,22 @@ func _load_json():
 			push_error("Unexpected data ", typeof(parsed_json))
 	else:
 		push_error("JSON Parse Error: ", projects_json.get_error_message(), " at line ", projects_json.get_error_line())
+	
+	sort_projects()
+
+func sort_projects():
+	projects.sort_custom(func(a:Project, b:Project):
+		return a.date_time > b.date_time
+	)
+
+func rebuild_json():
+	var projects_json:Array[Dictionary] = []
+	
+	for project in projects:
+		projects_json.append(project.to_dict())
+	
+	return JSON.stringify(projects_json, "", false, true)
+
+func save_json():
+	var file_access = FileAccess.open(PROJECTS_JSON_PATH, FileAccess.WRITE)
+	file_access.store_string(rebuild_json())
