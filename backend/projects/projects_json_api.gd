@@ -17,6 +17,7 @@ func load_json():
 	if !FileAccess.file_exists(PROJECTS_JSON_PATH):
 		push_error("PROJECTS_JSON_PATH does not exist.")
 		return
+	
 	var file_access = FileAccess.open(PROJECTS_JSON_PATH, FileAccess.READ)
 	var projects_json_string = file_access.get_as_text()
 	
