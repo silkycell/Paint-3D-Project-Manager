@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=21 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
 [ext_resource type="Script" path="res://menu/projects/project_panel.gd" id="2_qt3du"]
@@ -12,8 +12,27 @@
 [ext_resource type="Script" path="res://menu/projects/import/import_progress_panel.gd" id="10_1db86"]
 [ext_resource type="Script" path="res://menu/projects/tasks/custom_confirmation_dialog.gd" id="10_wty4p"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_conew"]
-font_size = 40
+[sub_resource type="SystemFont" id="SystemFont_fvwaa"]
+font_names = PackedStringArray("Segoe UI", "Sans-Serif")
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ku7b"]
+bg_color = Color(0.941176, 0.94902, 0.952941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owh4c"]
+bg_color = Color(0.913725, 0.92549, 0.929412, 1)
+
+[sub_resource type="Theme" id="Theme_hilio"]
+Button/fonts/font = SubResource("SystemFont_fvwaa")
+Fonts/fonts/normal = SubResource("SystemFont_fvwaa")
+HeaderLarge/font_sizes/font_size = 24
+Label/colors/font_color = Color(0.133333, 0.133333, 0.333333, 1)
+Label/font_sizes/font_size = 17
+Label/fonts/font = SubResource("SystemFont_fvwaa")
+Panel/styles/panel = SubResource("StyleBoxFlat_7ku7b")
+PanelSidebar/base_type = &"Panel"
+PanelSidebar/styles/panel = SubResource("StyleBoxFlat_owh4c")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu2ph"]
 bg_color = Color(0.255659, 0.255659, 0.255659, 1)
@@ -37,35 +56,49 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_hilio")
 
-[node name="ProjectsList" type="ScrollContainer" parent="."]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.212674
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(-10, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer/Control"]
+layout_mode = 2
+offset_right = 416.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"PanelSidebar"
+
+[node name="ProjectsList" type="ScrollContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(319, 0)
+layout_mode = 2
 script = ExtResource("1_wdfsu")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ProjectsList"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ProjectsList"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 2
 
-[node name="ProjectPanel" type="Panel" parent="."]
+[node name="ProjectPanel" type="Panel" parent="HBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.213
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.376022
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("2_qt3du")
 
-[node name="ProjectName" type="Label" parent="ProjectPanel"]
+[node name="ProjectName" type="Label" parent="HBoxContainer/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.998
@@ -74,13 +107,13 @@ offset_left = 33.0
 offset_top = 3.0
 offset_right = -0.186035
 offset_bottom = -0.248001
+theme_type_variation = &"HeaderLarge"
 text = "Name"
-label_settings = SubResource("LabelSettings_conew")
 vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="Buttons" type="HBoxContainer" parent="ProjectPanel"]
+[node name="Buttons" type="HBoxContainer" parent="HBoxContainer/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.769
@@ -91,19 +124,19 @@ offset_top = -0.312042
 offset_right = 0.5
 offset_bottom = -64.0
 
-[node name="ImportButton" type="Button" parent="ProjectPanel/Buttons"]
+[node name="ImportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Import"
 script = ExtResource("3_hxtem")
 
-[node name="ExportButton" type="Button" parent="ProjectPanel/Buttons"]
+[node name="ExportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Export"
 script = ExtResource("3_ijuv3")
 
-[node name="Thumbnail" type="TextureRect" parent="ProjectPanel"]
+[node name="Thumbnail" type="TextureRect" parent="HBoxContainer/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.637
@@ -302,8 +335,8 @@ offset_top = 0.249969
 offset_right = -98.0
 offset_bottom = -0.250031
 
-[connection signal="pressed" from="ProjectPanel/Buttons/ImportButton" to="ProjectPanel/Buttons/ImportButton" method="_on_pressed"]
-[connection signal="pressed" from="ProjectPanel/Buttons/ExportButton" to="ProjectPanel/Buttons/ExportButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons/ImportButton" to="HBoxContainer/ProjectPanel/Buttons/ImportButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons/ExportButton" to="HBoxContainer/ProjectPanel/Buttons/ExportButton" method="_on_pressed"]
 [connection signal="export_thread_update" from="ExportHandler" to="ExportHandler/ExportProgressPanel" method="_on_export_handler_export_thread_update"]
 [connection signal="file_selected" from="ExportHandler/ExportDialog" to="ExportHandler" method="_on_export_dialog_file_selected"]
 [connection signal="import_thread_update" from="ImportHandler" to="ImportHandler/ImportProgressPanel" method="_on_import_handler_import_thread_update"]
