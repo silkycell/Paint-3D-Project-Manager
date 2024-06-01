@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://n3lfb6rm53uc"]
 
-[ext_resource type="Script" path="res://menu/projects/labelled_progress_bar.gd" id="1_cyq28"]
+[ext_resource type="Script" path="res://menu/projects/tasks/labelled_progress_bar.gd" id="1_cyq28"]
 
 [node name="LabelledProgressBar" type="ProgressBar"]
 anchors_preset = -1
