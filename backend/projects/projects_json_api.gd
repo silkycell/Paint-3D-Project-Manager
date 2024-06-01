@@ -1,6 +1,7 @@
 extends Node
 
 const PROJECTS_FOLDER_PATH_RELATIVE:String = "Packages/Microsoft.MSPaint_8wekyb3d8bbwe/LocalState/Projects"
+
 var LOCAL_APPDATA_PATH:String = OS.get_environment("LocalAppData")
 var PROJECTS_FOLDER_PATH:String = LOCAL_APPDATA_PATH.path_join(PROJECTS_FOLDER_PATH_RELATIVE)
 var PROJECTS_JSON_PATH = PROJECTS_FOLDER_PATH.path_join("Projects.json")
@@ -11,6 +12,8 @@ func _ready():
 	load_json()
 
 func load_json():
+	if OS.get_name() != "Windows":
+		PROJECTS_JSON_PATH = "res://backend/projects/sample_project.json"
 	if !FileAccess.file_exists(PROJECTS_JSON_PATH):
 		push_error("PROJECTS_JSON_PATH does not exist.")
 		return
