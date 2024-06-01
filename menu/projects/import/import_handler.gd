@@ -32,7 +32,23 @@ func _on_import_dialog_file_selected(path:String):
 		exit_import()
 		return
 	
-	var data_json = JSON.parse_string(reader.read_file("data.json").get_string_from_ascii())
+	var data_json
+	
+	if !reader.file_exists("data.json"): # old format check
+		# TODO: add support for multi project P3Ds
+		var export_projects = JSON.parse_string(reader.read_file("exportProjects.json").get_string_from_ascii())
+		
+		if (export_projects.size() > 1):
+			push_error("Support for multi-project P3Ds is not yet implemented.")
+			exit_import()
+			return
+		
+		data_json = {
+			"version": 0,
+			"project_data": export_projects[0]
+		}
+	else:
+		data_json = JSON.parse_string(reader.read_file("data.json").get_string_from_ascii())
 	
 	var project_folder_name = data_json["project_data"]["Path"]
 	project_folder_name = project_folder_name.erase(project_folder_name.find("Projects\\"), "Projects\\".length())
@@ -92,11 +108,22 @@ func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictiona
 	
 	DirAccess.make_dir_recursive_absolute(project_location)
 	
-	var idx = 1 # this is set to 1 to account for data.json
+	var files_to_skip = ["data.json", "fileCheck.txt", "exportProjects.json"]
+	
+	var idx = 0
+	for file in files_to_skip: 
+		if reader.file_exists(file): idx += 1
+	
 	for zip_file_name in reader.get_files():
-		if zip_file_name == "data.json": continue
+		if files_to_skip.find(zip_file_name) != -1: continue
 		
-		var file_name = zip_file_name.erase(zip_file_name.find("project/"), "project/".length())
+		var file_name
+		
+		if data_json.version == 0:
+			file_name = zip_file_name.erase(zip_file_name.find(project_folder_name), project_folder_name.length())
+		else:
+			file_name = zip_file_name.erase(zip_file_name.find("project/"), "project/".length())
+		
 		var file_access = FileAccess.open(project_location.path_join(file_name), FileAccess.WRITE)
 		
 		call_deferred("emit_signal", "import_thread_update", "import", {
