@@ -12,6 +12,8 @@ func _on_import_handler_import_thread_update(type, data):
 			info_label.text = "Starting Import..."
 			labelled_progress_bar.hide()
 			show()
+		"delete":
+			info_label.text = "Deleting old files..."
 		"import":
 			labelled_progress_bar.show()
 			
