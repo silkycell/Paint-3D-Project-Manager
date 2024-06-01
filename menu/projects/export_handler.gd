@@ -28,7 +28,7 @@ func exit_export():
 
 func _on_export_dialog_file_selected(path:String):
 	if path.get_extension() == "":
-		path += ".p3d"
+		path += ".p3dpj"
 	
 	# this code is stupid, if theres a way to un-stupid it please let me know
 	var should_continue = true
