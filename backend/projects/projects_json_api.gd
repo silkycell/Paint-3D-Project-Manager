@@ -44,3 +44,10 @@ func rebuild_json():
 func save_json():
 	var file_access = FileAccess.open(PROJECTS_JSON_PATH, FileAccess.WRITE)
 	file_access.store_string(rebuild_json())
+
+func get_project_from_folder(folder:String):
+	for project in projects:
+		if project.project_folder == folder:
+			return project
+	
+	return null
