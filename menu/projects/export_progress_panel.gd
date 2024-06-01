@@ -13,7 +13,7 @@ func _on_export_handler_export_thread_update(type, data):
 			labelled_progress_bar.hide()
 			show()
 		"index":
-			info_label.text = "Indexing Files... " + str(data.count)
+			info_label.text = "Indexing Files... (" + str(data.count) + ")"
 		"write":
 			labelled_progress_bar.show()
 			
