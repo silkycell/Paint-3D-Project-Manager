@@ -50,8 +50,7 @@ func _on_import_dialog_file_selected(path:String):
 				exit_import()
 				should_continue = false
 			"replace":
-				var index = ProjectsJsonAPI.projects.find(ProjectsJsonAPI.get_project_from_folder(project_folder_name))
-				ProjectsJsonAPI.projects.remove_at(index)
+				ProjectsJsonAPI.projects.erase(ProjectsJsonAPI.get_project_from_folder(project_folder_name))
 			"confirm": # create folder
 				var project_folder_name_copy = project_folder_name + " (1)"
 				
@@ -69,14 +68,15 @@ func _on_import_dialog_file_selected(path:String):
 		
 		import_thread = Thread.new()
 		import_thread.start(import_project.bind(ProjectsJsonAPI.PROJECTS_FOLDER_PATH, reader, data_json))
-		finished_importing.connect(func(project_object:Project):
-			ProjectsJsonAPI.projects.append(project_object)
-			ProjectsJsonAPI.sort_projects()
-			ProjectsJsonAPI.save_json()
-			
-			get_node("%ProjectsList").generate_buttons()
-			exit_import()
-		)
+		
+		var project_object = await finished_importing
+		
+		ProjectsJsonAPI.projects.append(project_object)
+		ProjectsJsonAPI.sort_projects()
+		ProjectsJsonAPI.save_json()
+		
+		get_node("%ProjectsList").generate_buttons()
+		exit_import()
 
 func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictionary):
 	call_deferred("emit_signal", "import_thread_update", "start", {})
