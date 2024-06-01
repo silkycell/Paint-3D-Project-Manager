@@ -14,6 +14,7 @@ func _ready():
 func load_json():
 	if OS.get_name() != "Windows":
 		PROJECTS_JSON_PATH = "res://backend/projects/sample_project.json"
+	
 	if !FileAccess.file_exists(PROJECTS_JSON_PATH):
 		push_error("PROJECTS_JSON_PATH does not exist.")
 		return
