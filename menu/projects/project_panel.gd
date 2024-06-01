@@ -22,6 +22,7 @@ func _ready():
 	if !ProjectsJsonAPI.projects.size(): #ERROR HANDLING!
 		push_error("ProjectsJsonAPI.projects is empty!")
 		return
+	
 	selected_project = ProjectsJsonAPI.projects[0]
 	
 	GlobalSignalHandler.project_selected.connect(func(project):
