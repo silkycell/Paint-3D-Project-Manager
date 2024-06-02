@@ -10,6 +10,7 @@ anchor_right = 0.201
 anchor_bottom = 0.108
 offset_right = 0.447998
 offset_bottom = 0.0159988
+theme_type_variation = &"FlatButton"
 clip_text = true
 script = ExtResource("1_ocnbv")
 label = NodePath("Label")

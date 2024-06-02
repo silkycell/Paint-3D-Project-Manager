@@ -16,4 +16,3 @@ func generate_buttons():
 		var button = PROJECT_BUTTON.instantiate()
 		button.load(project)
 		v_box.add_child(button)
-		button.theme_type_variation = "FlatButton"
