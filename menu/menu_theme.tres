@@ -1,0 +1,23 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://eno3kw6ga4uf"]
+
+[sub_resource type="SystemFont" id="SystemFont_fvwaa"]
+font_names = PackedStringArray("Segoe UI", "Sans-Serif")
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ku7b"]
+bg_color = Color(0.941176, 0.94902, 0.952941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owh4c"]
+bg_color = Color(0.913725, 0.92549, 0.929412, 1)
+
+[resource]
+Button/fonts/font = SubResource("SystemFont_fvwaa")
+Fonts/fonts/normal = SubResource("SystemFont_fvwaa")
+HeaderLarge/font_sizes/font_size = 24
+Label/colors/font_color = Color(0.133333, 0.133333, 0.333333, 1)
+Label/font_sizes/font_size = 17
+Label/fonts/font = SubResource("SystemFont_fvwaa")
+Panel/styles/panel = SubResource("StyleBoxFlat_7ku7b")
+PanelSidebar/base_type = &"Panel"
+PanelSidebar/styles/panel = SubResource("StyleBoxFlat_owh4c")

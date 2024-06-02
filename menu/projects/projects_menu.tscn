@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=18 format=3 uid="uid://bggxtdevj1r6v"]
 
+[ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
 [ext_resource type="Script" path="res://menu/projects/project_panel.gd" id="2_qt3du"]
 [ext_resource type="Texture2D" uid="uid://bhhq4f6xu4ldc" path="res://menu/projects/thumbnail_loading.png" id="3_4jn04"]
@@ -11,28 +12,6 @@
 [ext_resource type="Script" path="res://menu/projects/import/import_handler.gd" id="8_gtaak"]
 [ext_resource type="Script" path="res://menu/projects/import/import_progress_panel.gd" id="10_1db86"]
 [ext_resource type="Script" path="res://menu/projects/tasks/custom_confirmation_dialog.gd" id="10_wty4p"]
-
-[sub_resource type="SystemFont" id="SystemFont_fvwaa"]
-font_names = PackedStringArray("Segoe UI", "Sans-Serif")
-hinting = 2
-subpixel_positioning = 0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ku7b"]
-bg_color = Color(0.941176, 0.94902, 0.952941, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owh4c"]
-bg_color = Color(0.913725, 0.92549, 0.929412, 1)
-
-[sub_resource type="Theme" id="Theme_hilio"]
-Button/fonts/font = SubResource("SystemFont_fvwaa")
-Fonts/fonts/normal = SubResource("SystemFont_fvwaa")
-HeaderLarge/font_sizes/font_size = 24
-Label/colors/font_color = Color(0.133333, 0.133333, 0.333333, 1)
-Label/font_sizes/font_size = 17
-Label/fonts/font = SubResource("SystemFont_fvwaa")
-Panel/styles/panel = SubResource("StyleBoxFlat_7ku7b")
-PanelSidebar/base_type = &"Panel"
-PanelSidebar/styles/panel = SubResource("StyleBoxFlat_owh4c")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu2ph"]
 bg_color = Color(0.255659, 0.255659, 0.255659, 1)
@@ -56,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_hilio")
+theme = ExtResource("1_ti7wl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
