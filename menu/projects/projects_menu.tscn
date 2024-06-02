@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=13 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -8,25 +8,10 @@
 [ext_resource type="Script" path="res://menu/projects/export/export_button.gd" id="3_ijuv3"]
 [ext_resource type="Script" path="res://menu/projects/export/export_handler.gd" id="5_qthqx"]
 [ext_resource type="Script" path="res://menu/projects/export/export_progress_panel.gd" id="6_5afnv"]
-[ext_resource type="PackedScene" uid="uid://n3lfb6rm53uc" path="res://menu/projects/tasks/labelled_progress_bar.tscn" id="7_asmc7"]
 [ext_resource type="Script" path="res://menu/projects/import/import_handler.gd" id="8_gtaak"]
 [ext_resource type="Script" path="res://menu/projects/import/import_progress_panel.gd" id="10_1db86"]
 [ext_resource type="Script" path="res://menu/projects/tasks/custom_confirmation_dialog.gd" id="10_wty4p"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu2ph"]
-bg_color = Color(0.255659, 0.255659, 0.255659, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_dxb0w"]
-font_size = 18
-
-[sub_resource type="LabelSettings" id="LabelSettings_5uvwi"]
-font_size = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_rn4k5"]
-font_size = 18
-
-[sub_resource type="LabelSettings" id="LabelSettings_rfh4t"]
-font_size = 10
+[ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/projects/tasks/progress_panel.tscn" id="12_cl2e7"]
 
 [node name="ProjectsMenu" type="Control"]
 layout_mode = 3
@@ -134,7 +119,6 @@ stretch_mode = 5
 
 [node name="ExportHandler" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -161,67 +145,12 @@ Do you want to replace it?"
 cancel_button_text = "No"
 script = ExtResource("10_wty4p")
 
-[node name="ExportProgressPanel" type="Panel" parent="ExportHandler"]
+[node name="ExportProgressPanel" parent="ExportHandler" instance=ExtResource("12_cl2e7")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 133.0
-offset_top = 59.0
-offset_right = -133.0
-offset_bottom = -59.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qu2ph")
+offset_bottom = -49.0
 script = ExtResource("6_5afnv")
-
-[node name="InfoLabel" type="Label" parent="ExportHandler/ExportProgressPanel"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.357
-anchor_right = 1.0
-anchor_bottom = 0.496
-offset_left = 16.0
-offset_top = -0.210007
-offset_right = -13.0
-offset_bottom = 0.119995
-grow_horizontal = 2
-grow_vertical = 2
-text = "Nodes_18446744069414587421_SurfaceAlignmentProvider.bin"
-label_settings = SubResource("LabelSettings_dxb0w")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-text_overrun_behavior = 3
-
-[node name="TaskLabel" type="Label" parent="ExportHandler/ExportProgressPanel"]
-custom_minimum_size = Vector2(0, 15)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.596
-offset_left = 8.0
-offset_top = 27.0
-offset_right = -10.0
-offset_bottom = 0.119995
-grow_horizontal = 2
-grow_vertical = 2
-text = "Nodes_18446744069414587421_SurfaceAlignmentProvider.bin"
-label_settings = SubResource("LabelSettings_5uvwi")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-text_overrun_behavior = 3
-
-[node name="LabelledProgressBar" parent="ExportHandler/ExportProgressPanel" instance=ExtResource("7_asmc7")]
-layout_mode = 1
-anchor_bottom = 0.525
-offset_left = 98.0
-offset_top = 0.249969
-offset_right = -98.0
-offset_bottom = -0.250031
 
 [node name="ImportHandler" type="Control" parent="."]
 unique_name_in_owner = true
@@ -252,71 +181,14 @@ dialog_text = "A project with the folder \"%s\" already exists.
 Do you want to replace it?"
 script = ExtResource("10_wty4p")
 
-[node name="ImportProgressPanel" type="Panel" parent="ImportHandler"]
+[node name="ImportProgressPanel" parent="ImportHandler" instance=ExtResource("12_cl2e7")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 133.0
-offset_top = 59.0
-offset_right = -133.0
-offset_bottom = -59.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qu2ph")
+offset_bottom = -49.0
 script = ExtResource("10_1db86")
-
-[node name="InfoLabel" type="Label" parent="ImportHandler/ImportProgressPanel"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.357
-anchor_right = 1.0
-anchor_bottom = 0.496
-offset_left = 16.0
-offset_top = -0.210007
-offset_right = -13.0
-offset_bottom = 0.119995
-grow_horizontal = 2
-grow_vertical = 2
-text = "Nodes_18446744069414587421_SurfaceAlignmentProvider.bin"
-label_settings = SubResource("LabelSettings_rn4k5")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-text_overrun_behavior = 3
-
-[node name="TaskLabel" type="Label" parent="ImportHandler/ImportProgressPanel"]
-custom_minimum_size = Vector2(0, 15)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.596
-offset_left = 8.0
-offset_top = 27.0
-offset_right = -10.0
-offset_bottom = 0.119995
-grow_horizontal = 2
-grow_vertical = 2
-text = "Nodes_18446744069414587421_SurfaceAlignmentProvider.bin"
-label_settings = SubResource("LabelSettings_rfh4t")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-text_overrun_behavior = 3
-
-[node name="LabelledProgressBar" parent="ImportHandler/ImportProgressPanel" instance=ExtResource("7_asmc7")]
-layout_mode = 1
-anchor_bottom = 0.525
-offset_left = 98.0
-offset_top = 0.249969
-offset_right = -98.0
-offset_bottom = -0.250031
 
 [connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons/ImportButton" to="HBoxContainer/ProjectPanel/Buttons/ImportButton" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons/ExportButton" to="HBoxContainer/ProjectPanel/Buttons/ExportButton" method="_on_pressed"]
-[connection signal="export_thread_update" from="ExportHandler" to="ExportHandler/ExportProgressPanel" method="_on_export_handler_export_thread_update"]
 [connection signal="file_selected" from="ExportHandler/ExportDialog" to="ExportHandler" method="_on_export_dialog_file_selected"]
-[connection signal="import_thread_update" from="ImportHandler" to="ImportHandler/ImportProgressPanel" method="_on_import_handler_import_thread_update"]
 [connection signal="file_selected" from="ImportHandler/ImportDialog" to="ImportHandler" method="_on_import_dialog_file_selected"]

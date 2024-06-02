@@ -5,9 +5,10 @@ extends Panel
 @onready var labelled_progress_bar = $LabelledProgressBar
 
 func _ready():
+	get_node("%ExportHandler").export_thread_update.connect(_on_thread_update)
 	hide()
 
-func _on_export_handler_export_thread_update(type, data):
+func _on_thread_update(type, data):
 	match type:
 		"start":
 			labelled_progress_bar.hide()
