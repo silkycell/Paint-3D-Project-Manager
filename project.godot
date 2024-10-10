@@ -15,7 +15,7 @@ config/version="0.0.0"
 run/main_scene="res://menu/projects/projects_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
-boot_splash/image="res://icon.png"
+boot_splash/image="res://splash.png"
 boot_splash/fullsize=false
 config/icon="res://icon.png"
 
