@@ -1,9 +1,33 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://eno3kw6ga4uf"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://eno3kw6ga4uf"]
 
 [sub_resource type="SystemFont" id="SystemFont_fvwaa"]
 font_names = PackedStringArray("Segoe UI", "Sans-Serif")
 hinting = 2
 subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_jvjep"]
+font_names = PackedStringArray("Segoe UI", "Sans-Serif")
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s66k"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.392157, 0.713726, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdbj6"]
+content_margin_left = 11.0
+content_margin_top = 13.0
+content_margin_bottom = 13.0
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.831373, 0.85098, 0.886275, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ku7b"]
 bg_color = Color(0.941176, 0.94902, 0.952941, 1)
@@ -18,6 +42,15 @@ HeaderLarge/font_sizes/font_size = 24
 Label/colors/font_color = Color(0.133333, 0.133333, 0.333333, 1)
 Label/font_sizes/font_size = 17
 Label/fonts/font = SubResource("SystemFont_fvwaa")
+LineEdit/colors/caret_color = Color(0, 0, 0, 1)
+LineEdit/colors/font_color = Color(0.301961, 0.301961, 0.454902, 1)
+LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.411765)
+LineEdit/colors/font_selected_color = Color(1, 1, 1, 1)
+LineEdit/colors/selection_color = Color(0, 0.470588, 0.831373, 1)
+LineEdit/font_sizes/font_size = 20
+LineEdit/fonts/font = SubResource("SystemFont_jvjep")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_1s66k")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_fdbj6")
 Panel/styles/panel = SubResource("StyleBoxFlat_7ku7b")
 PanelSidebar/base_type = &"Panel"
 PanelSidebar/styles/panel = SubResource("StyleBoxFlat_owh4c")
