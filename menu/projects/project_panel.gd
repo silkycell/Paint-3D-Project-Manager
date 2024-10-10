@@ -1,7 +1,7 @@
 extends Panel
 class_name ProjectPanel
 
-const THUMBNAIL_LOADING = preload("res://menu/projects/thumbnail_loading.png")
+const THUMBNAIL_LOADING = preload("res://menu/projects/thumbnail_loading.tres")
 
 @onready var project_name = $ProjectName
 @onready var thumbnail = $Thumbnail

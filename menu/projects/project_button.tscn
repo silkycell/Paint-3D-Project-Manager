@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://1ekevq728ude"]
 
 [ext_resource type="Script" path="res://menu/projects/project_button.gd" id="1_ocnbv"]
-[ext_resource type="Texture2D" uid="uid://bhhq4f6xu4ldc" path="res://menu/projects/thumbnail_loading.png" id="2_mpr2i"]
+[ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/projects/thumbnail_loading.tres" id="2_hjql8"]
 
 [node name="ProjectButton" type="Button" node_paths=PackedStringArray("label", "thumbnail")]
 custom_minimum_size = Vector2(232, 70)
@@ -46,7 +46,7 @@ offset_top = -0.0320015
 offset_right = -29.0
 offset_bottom = 0.0279999
 grow_vertical = 2
-texture = ExtResource("2_mpr2i")
+texture = ExtResource("2_hjql8")
 expand_mode = 1
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
