@@ -4,6 +4,7 @@ class_name ProjectsList
 const PROJECT_BUTTON = preload("res://menu/projects/project_button.tscn")
 
 @onready var v_box = $VBoxContainer
+@onready var search_bar = $"../SearchBar"
 
 func _ready():
 	generate_buttons()
@@ -16,3 +17,5 @@ func generate_buttons():
 		var button = PROJECT_BUTTON.instantiate()
 		button.load(project)
 		v_box.add_child(button)
+	
+	search_bar.text = ""
