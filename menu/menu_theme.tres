@@ -25,6 +25,9 @@ hinting = 2
 subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s66k"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 1
 border_width_top = 1
@@ -33,9 +36,9 @@ border_width_bottom = 1
 border_color = Color(0, 0.392157, 0.713726, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdbj6"]
-content_margin_left = 11.0
-content_margin_top = 13.0
-content_margin_bottom = 13.0
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
 bg_color = Color(1, 1, 1, 1)
 border_width_left = 1
 border_width_top = 1
@@ -59,11 +62,11 @@ bg_color = Color(0.545098, 0.545098, 0.545098, 1)
 bg_color = Color(0.360784, 0.364706, 0.364706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru6kh"]
-content_margin_left = 10.0
+content_margin_left = 8.0
 bg_color = Color(0.913725, 0.92549, 0.929412, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jt6ag"]
-content_margin_left = 10.0
+content_margin_left = 8.0
 bg_color = Color(0.768851, 0.798469, 0.808314, 1)
 
 [resource]
@@ -79,14 +82,14 @@ Button/styles/pressed = SubResource("StyleBoxFlat_xf5y8")
 Fonts/fonts/normal = SubResource("SystemFont_fvwaa")
 HeaderLarge/font_sizes/font_size = 24
 Label/colors/font_color = Color(0.133333, 0.133333, 0.333333, 1)
-Label/font_sizes/font_size = 17
+Label/font_sizes/font_size = 16
 Label/fonts/font = SubResource("SystemFont_fvwaa")
 LineEdit/colors/caret_color = Color(0, 0, 0, 1)
 LineEdit/colors/font_color = Color(0.301961, 0.301961, 0.454902, 1)
 LineEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.411765)
 LineEdit/colors/font_selected_color = Color(1, 1, 1, 1)
 LineEdit/colors/selection_color = Color(0, 0.470588, 0.831373, 1)
-LineEdit/font_sizes/font_size = 20
+LineEdit/font_sizes/font_size = 16
 LineEdit/fonts/font = SubResource("SystemFont_jvjep")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_1s66k")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_fdbj6")
