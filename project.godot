@@ -30,3 +30,4 @@ window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/stretch/scale=0.8
+window/vsync/vsync_mode=0
