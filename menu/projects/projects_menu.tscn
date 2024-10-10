@@ -31,22 +31,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Control" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(-10, 0)
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="HBoxContainer/Control"]
-layout_mode = 2
-offset_right = 416.0
-offset_bottom = 648.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_type_variation = &"PanelSidebar"
-
 [node name="ProjectsList" type="ScrollContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(319, 0)
 layout_mode = 2
+theme = ExtResource("1_ti7wl")
+theme_type_variation = &"PanelSidebar"
 script = ExtResource("1_wdfsu")
 metadata/_edit_use_anchors_ = true
 
@@ -119,6 +109,7 @@ stretch_mode = 5
 
 [node name="ExportHandler" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 15
