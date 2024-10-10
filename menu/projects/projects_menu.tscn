@@ -159,80 +159,6 @@ text = "Export
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons2" type="HBoxContainer" parent="HBoxContainer/ProjectPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.779
-anchor_right = 0.484
-anchor_bottom = 1.0
-offset_left = 38.0
-offset_top = 0.207977
-offset_right = -0.14801
-offset_bottom = -64.0
-
-[node name="ImportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_ti7wl")
-script = ExtResource("3_hxtem")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ProjectPanel/Buttons2/ImportButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 15
-alignment = 1
-
-[node name="Icon" type="TextureRect" parent="HBoxContainer/ProjectPanel/Buttons2/ImportButton/HBoxContainer"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("5_b8a6r")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="HBoxContainer/ProjectPanel/Buttons2/ImportButton/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_ti7wl")
-theme_override_font_sizes/font_size = 25
-text = "Import"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ExportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_ti7wl")
-script = ExtResource("3_ijuv3")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ProjectPanel/Buttons2/ExportButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 15
-alignment = 1
-
-[node name="Icon" type="TextureRect" parent="HBoxContainer/ProjectPanel/Buttons2/ExportButton/HBoxContainer"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-texture = ExtResource("8_e514j")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="HBoxContainer/ProjectPanel/Buttons2/ExportButton/HBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_ti7wl")
-theme_override_font_sizes/font_size = 25
-text = "Export
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Thumbnail" type="TextureRect" parent="HBoxContainer/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
@@ -325,7 +251,5 @@ script = ExtResource("10_1db86")
 [connection signal="text_changed" from="HBoxContainer/ProjectsList/SearchBar" to="HBoxContainer/ProjectsList/SearchBar" method="_on_text_changed"]
 [connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons/ImportButton" to="HBoxContainer/ProjectPanel/Buttons/ImportButton" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons/ExportButton" to="HBoxContainer/ProjectPanel/Buttons/ExportButton" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons2/ImportButton" to="HBoxContainer/ProjectPanel/Buttons2/ImportButton" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons2/ExportButton" to="HBoxContainer/ProjectPanel/Buttons2/ExportButton" method="_on_pressed"]
 [connection signal="file_selected" from="ExportHandler/ExportDialog" to="ExportHandler" method="_on_export_dialog_file_selected"]
 [connection signal="file_selected" from="ImportHandler/ImportDialog" to="ImportHandler" method="_on_import_dialog_file_selected"]
