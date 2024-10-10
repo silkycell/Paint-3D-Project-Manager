@@ -4,4 +4,3 @@ extends Button
 
 func _on_toggled(toggled_on):
 	settings_menu.visible = toggled_on
-	print(toggled_on)
