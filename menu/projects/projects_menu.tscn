@@ -47,7 +47,7 @@ placeholder_text = "Search"
 caret_blink = true
 script = ExtResource("2_blyf4")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/ProjectsList"]
+[node name="ProjectsListContainer" type="ScrollContainer" parent="HBoxContainer/ProjectsList"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(319, 0)
 layout_mode = 2
@@ -57,7 +57,7 @@ follow_focus = true
 script = ExtResource("1_wdfsu")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ProjectsList/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ProjectsList/ProjectsListContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

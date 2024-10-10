@@ -1,6 +1,6 @@
 extends LineEdit
 
-@onready var scroll_container = %ScrollContainer
+@onready var scroll_container = %ProjectsListContainer
 
 var v_box:VBoxContainer:
 	get():

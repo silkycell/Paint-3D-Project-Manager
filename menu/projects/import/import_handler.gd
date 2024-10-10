@@ -91,7 +91,7 @@ func _on_import_dialog_file_selected(path:String):
 		ProjectsJsonAPI.sort_projects()
 		ProjectsJsonAPI.save_json()
 		
-		get_node("%ProjectsList").generate_buttons()
+		get_node("%ProjectsListContainer").generate_buttons()
 		exit_import()
 
 func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictionary):
