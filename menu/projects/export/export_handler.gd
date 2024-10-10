@@ -1,4 +1,5 @@
 extends Control
+class_name ExportHandler
 
 const JSON_VERSION:float = 1
 const REPLACETEXT:String = "The file \"%s\" already exists.\nDo you want to replace it?"

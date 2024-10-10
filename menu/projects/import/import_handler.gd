@@ -1,4 +1,5 @@
 extends Control
+class_name ImportHandler
 
 const REPLACETEXT:String = "A project with the folder \"%s\" already exists.\nDo you want to replace it?"
 
@@ -38,7 +39,7 @@ func _on_import_dialog_file_selected(path:String):
 		# TODO: add support for multi project P3Ds
 		var export_projects = JSON.parse_string(reader.read_file("exportProjects.json").get_string_from_ascii())
 		
-		if (export_projects.size() > 1):
+		if export_projects.size() > 1:
 			push_error("Support for multi-project P3Ds is not yet implemented.")
 			exit_import()
 			return
@@ -52,6 +53,12 @@ func _on_import_dialog_file_selected(path:String):
 	
 	var project_folder_name = data_json["project_data"]["Path"]
 	project_folder_name = project_folder_name.erase(project_folder_name.find("Projects\\"), "Projects\\".length())
+	
+	if data_json.version > ExportHandler.JSON_VERSION:
+		push_error("Current version is lesser than JSON version. Please use a more recent version of P3DPM to import this project."
+		, "\nCurrent Version: ", ExportHandler.JSON_VERSION, ", Project Version: ", data_json.version, ".")
+		exit_import()
+		return
 	
 	# this code is stupid, if theres a way to un-stupid it please let me know
 	var should_continue = true
