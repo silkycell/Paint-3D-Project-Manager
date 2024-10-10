@@ -32,6 +32,15 @@ var absolute_project_folder:String:
 	get:
 		return ProjectsJsonAPI.PROJECTS_FOLDER_PATH.path_join(project_folder)
 
+var size_thread:Thread
+var size:float = -INF:
+	get:
+		if size == -INF && size_thread == null:
+			size_thread = Thread.new()
+			size_thread.start(_calculate_size.bind(absolute_project_folder), Thread.PRIORITY_LOW)
+		
+		return size
+
 var thumbnail_thread:Thread
 var thumbnail:Texture2D = null
 
@@ -52,6 +61,10 @@ func _init(project_data:Dictionary):
 	
 	thumbnail_finished_loading.connect(func(thumbnail_texture):
 		thumbnail = thumbnail_texture
+	)
+	
+	size_finished_calculating.connect(func(calculated_size):
+		size = calculated_size
 	)
 
 signal thumbnail_finished_loading
@@ -83,6 +96,30 @@ func get_thumbnail_path():
 		image_path = ProjectsJsonAPI.PROJECTS_FOLDER_PATH.path_join(uri_path)
 	
 	return image_path
+
+signal size_finished_calculating
+func _calculate_size(folder):
+	var dir_access = DirAccess.open(folder)
+	
+	if dir_access == null:
+		call_deferred("emit_signal", "size_finished_calculating", -1)
+		push_warning("Error accessing project dir while getting size, Error Code: ", DirAccess.get_open_error())
+		return -1
+	
+	var total_size = 0
+	for file_name in dir_access.get_files():
+		var file_access = FileAccess.open(folder.path_join(file_name), FileAccess.READ)
+		
+		if file_access == null:
+			call_deferred("emit_signal", "size_finished_calculating", -1)
+			push_warning("Error accessing file while getting size, Error Code: ", FileAccess.get_open_error())
+			return -1
+		
+		total_size += file_access.get_length()
+		
+		file_access.close()
+	
+	call_deferred("emit_signal", "size_finished_calculating", total_size)
 
 func to_dict():
 	return {

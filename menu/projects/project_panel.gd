@@ -16,7 +16,9 @@ var selected_project:Project:
 			thumbnail.texture = THUMBNAIL_LOADING
 			await selected_project.thumbnail_finished_loading
 		
-		thumbnail.texture = selected_project.thumbnail
+		# JIC loading completes after we switched projects
+		if selected_project == value:
+			thumbnail.texture = selected_project.thumbnail
 
 func _ready():
 	if !ProjectsJsonAPI.projects.size(): #ERROR HANDLING!

@@ -113,6 +113,15 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
+[node name="ProjectSize" type="Label" parent="MainMenu/ProjectPanel/ProjectInfo"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Size: 0 MiB"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
+
 [node name="IconBox" type="HBoxContainer" parent="MainMenu/ProjectPanel/ProjectInfo"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
@@ -225,7 +234,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="SettingsContainer" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -235,6 +243,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="SettingsMenuContainer" type="Control" parent="SettingsContainer"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
