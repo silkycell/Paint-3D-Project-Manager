@@ -59,3 +59,6 @@ func get_project_from_folder(folder:String):
 			return project
 	
 	return null
+
+func check_proj_folder_exists(folder_name:String):
+	return DirAccess.dir_exists_absolute(PROJECTS_FOLDER_PATH.path_join(folder_name))

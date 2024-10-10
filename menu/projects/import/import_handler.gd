@@ -78,7 +78,7 @@ func _on_import_dialog_file_selected(path:String):
 				var project_folder_name_copy = project_folder_name + " (1)"
 				
 				var idx = 1
-				while ProjectsJsonAPI.get_project_from_folder(project_folder_name_copy) != null:
+				while ProjectsJsonAPI.check_proj_folder_exists(project_folder_name_copy) == true:
 					project_folder_name_copy = project_folder_name + " (" + str(idx) + ")"
 					idx += 1
 				
