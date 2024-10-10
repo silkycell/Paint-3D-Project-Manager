@@ -1,9 +1,23 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://eno3kw6ga4uf"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://eno3kw6ga4uf"]
 
 [sub_resource type="SystemFont" id="SystemFont_fvwaa"]
 font_names = PackedStringArray("Segoe UI", "Sans-Serif")
 hinting = 2
 subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s30oo"]
+bg_color = Color(0.835294, 0.847059, 0.870588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5mbye"]
+bg_color = Color(0.913725, 0.92549, 0.929412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xf5y8"]
+bg_color = Color(0.780341, 0.817199, 0.870419, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.340911, 0.415927, 0.473635, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_jvjep"]
 font_names = PackedStringArray("Segoe UI", "Sans-Serif")
@@ -32,11 +46,36 @@ border_color = Color(0.831373, 0.85098, 0.886275, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ku7b"]
 bg_color = Color(0.941176, 0.94902, 0.952941, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owh4c"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2skk"]
 bg_color = Color(0.913725, 0.92549, 0.929412, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amkbl"]
+bg_color = Color(0.72549, 0.729412, 0.729412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7seus"]
+bg_color = Color(0.545098, 0.545098, 0.545098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgwq2"]
+bg_color = Color(0.360784, 0.364706, 0.364706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru6kh"]
+content_margin_left = 10.0
+bg_color = Color(0.913725, 0.92549, 0.929412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jt6ag"]
+content_margin_left = 10.0
+bg_color = Color(0.768851, 0.798469, 0.808314, 1)
+
 [resource]
+Button/colors/font_color = Color(0.301961, 0.301961, 0.454902, 1)
+Button/colors/font_focus_color = Color(0.301961, 0.301961, 0.454902, 1)
+Button/colors/font_hover_color = Color(0.301961, 0.301961, 0.454902, 1)
+Button/colors/font_pressed_color = Color(0.301961, 0.301961, 0.454902, 1)
+Button/constants/icon_max_width = 25
 Button/fonts/font = SubResource("SystemFont_fvwaa")
+Button/styles/hover = SubResource("StyleBoxFlat_s30oo")
+Button/styles/normal = SubResource("StyleBoxFlat_5mbye")
+Button/styles/pressed = SubResource("StyleBoxFlat_xf5y8")
 Fonts/fonts/normal = SubResource("SystemFont_fvwaa")
 HeaderLarge/font_sizes/font_size = 24
 Label/colors/font_color = Color(0.133333, 0.133333, 0.333333, 1)
@@ -52,5 +91,9 @@ LineEdit/fonts/font = SubResource("SystemFont_jvjep")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_1s66k")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_fdbj6")
 Panel/styles/panel = SubResource("StyleBoxFlat_7ku7b")
-PanelSidebar/base_type = &"Panel"
-PanelSidebar/styles/panel = SubResource("StyleBoxFlat_owh4c")
+ScrollContainer/styles/panel = SubResource("StyleBoxFlat_k2skk")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_amkbl")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_7seus")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_tgwq2")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_ru6kh")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_jt6ag")

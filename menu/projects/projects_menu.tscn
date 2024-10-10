@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=17 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -7,12 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://bhhq4f6xu4ldc" path="res://menu/projects/thumbnail_loading.png" id="3_4jn04"]
 [ext_resource type="Script" path="res://menu/projects/import/import_button.gd" id="3_hxtem"]
 [ext_resource type="Script" path="res://menu/projects/export/export_button.gd" id="3_ijuv3"]
+[ext_resource type="Texture2D" uid="uid://dtwwh0dxlmuu5" path="res://menu/import_icon.svg" id="5_b8a6r"]
 [ext_resource type="Script" path="res://menu/projects/export/export_handler.gd" id="5_qthqx"]
 [ext_resource type="Script" path="res://menu/projects/export/export_progress_panel.gd" id="6_5afnv"]
+[ext_resource type="Texture2D" uid="uid://bphdjjy1s8vl5" path="res://menu/export_icon.svg" id="8_e514j"]
 [ext_resource type="Script" path="res://menu/projects/import/import_handler.gd" id="8_gtaak"]
 [ext_resource type="Script" path="res://menu/projects/import/import_progress_panel.gd" id="10_1db86"]
 [ext_resource type="Script" path="res://menu/projects/tasks/custom_confirmation_dialog.gd" id="10_wty4p"]
 [ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/projects/tasks/progress_panel.tscn" id="12_cl2e7"]
+
+[sub_resource type="Theme" id="Theme_txxj5"]
 
 [node name="ProjectsMenu" type="Control"]
 layout_mode = 3
@@ -48,8 +52,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(319, 0)
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("1_ti7wl")
-theme_type_variation = &"PanelSidebar"
+theme = SubResource("Theme_txxj5")
+follow_focus = true
 script = ExtResource("1_wdfsu")
 metadata/_edit_use_anchors_ = true
 
@@ -94,14 +98,65 @@ offset_bottom = -64.0
 [node name="ImportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Import"
+theme = ExtResource("1_ti7wl")
 script = ExtResource("3_hxtem")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ProjectPanel/Buttons/ImportButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/ProjectPanel/Buttons/ImportButton/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+texture = ExtResource("5_b8a6r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/ProjectPanel/Buttons/ImportButton/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_ti7wl")
+theme_override_font_sizes/font_size = 25
+text = "Import"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ExportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Export"
+theme = ExtResource("1_ti7wl")
 script = ExtResource("3_ijuv3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ProjectPanel/Buttons/ExportButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/ProjectPanel/Buttons/ExportButton/HBoxContainer"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+texture = ExtResource("8_e514j")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/ProjectPanel/Buttons/ExportButton/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_ti7wl")
+theme_override_font_sizes/font_size = 25
+text = "Export
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Thumbnail" type="TextureRect" parent="HBoxContainer/ProjectPanel"]
 layout_mode = 1
