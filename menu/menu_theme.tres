@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://eno3kw6ga4uf"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://eno3kw6ga4uf"]
 
 [sub_resource type="SystemFont" id="SystemFont_fvwaa"]
 font_names = PackedStringArray("Segoe UI", "Sans-Serif")
@@ -52,6 +52,17 @@ bg_color = Color(0.941176, 0.94902, 0.952941, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2skk"]
 bg_color = Color(0.913725, 0.92549, 0.929412, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55opf"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.94902, 0.94902, 0.94902, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amkbl"]
 bg_color = Color(0.72549, 0.729412, 0.729412, 1)
 
@@ -95,6 +106,9 @@ LineEdit/styles/focus = SubResource("StyleBoxFlat_1s66k")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_fdbj6")
 Panel/styles/panel = SubResource("StyleBoxFlat_7ku7b")
 ScrollContainer/styles/panel = SubResource("StyleBoxFlat_k2skk")
+TooltipLabel/colors/font_color = Color(0, 0, 0, 1)
+TooltipLabel/font_sizes/font_size = 12
+TooltipPanel/styles/panel = SubResource("StyleBoxFlat_55opf")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_amkbl")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_7seus")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_tgwq2")

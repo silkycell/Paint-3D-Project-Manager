@@ -1,20 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://1ekevq728ude"]
+[gd_scene load_steps=5 format=3 uid="uid://1ekevq728ude"]
 
 [ext_resource type="Script" path="res://menu/projects/project_button.gd" id="1_ocnbv"]
+[ext_resource type="Texture2D" uid="uid://dmiwlb5w87nbk" path="res://menu/projects/recovered_icon.svg" id="2_ckvyy"]
 [ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/projects/thumbnail_loading.tres" id="2_hjql8"]
+[ext_resource type="Texture2D" uid="uid://cwg218gfds8ys" path="res://menu/projects/unsaved_icon.svg" id="3_1mgtf"]
 
-[node name="ProjectButton" type="Button" node_paths=PackedStringArray("label", "thumbnail")]
-custom_minimum_size = Vector2(185.6, 56)
+[node name="ProjectButton" type="Button" node_paths=PackedStringArray("label", "thumbnail", "recovered_icon", "unsaved_icon")]
+custom_minimum_size = Vector2(275, 56)
 anchors_preset = -1
-anchor_right = 0.161
+anchor_right = 0.239
 anchor_bottom = 0.086
-offset_right = 0.527985
+offset_right = -0.328003
 offset_bottom = 0.271999
 theme_type_variation = &"FlatButton"
 clip_text = true
 script = ExtResource("1_ocnbv")
 label = NodePath("Label")
 thumbnail = NodePath("Thumbnail")
+recovered_icon = NodePath("RecoveredIcon")
+unsaved_icon = NodePath("UnsavedIcon")
+
+[node name="RecoveredIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.429
+anchor_bottom = 0.5
+offset_left = 95.0
+offset_top = 2.0
+offset_right = 0.0249863
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Recovered"
+texture = ExtResource("2_ckvyy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UnsavedIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 116.0
+offset_top = 2.0
+offset_right = -1.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Not Previously Saved"
+texture = ExtResource("3_1mgtf")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -39,13 +75,13 @@ text_overrun_behavior = 3
 [node name="Thumbnail" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.231778
-anchor_right = 0.5
-anchor_bottom = 0.759
-offset_left = 6.0
+anchor_top = 0.214857
+anchor_right = 0.338636
+anchor_bottom = 0.786
+offset_left = 36.0
 offset_top = -0.0320015
-offset_right = -29.0
-offset_bottom = 0.0279999
+offset_right = -0.125
+offset_bottom = -0.0159988
 grow_vertical = 2
 texture = ExtResource("2_hjql8")
 expand_mode = 1
