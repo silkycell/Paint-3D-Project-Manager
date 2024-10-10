@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dtwwh0dxlmuu5" path="res://menu/projects/import_icon.svg" id="5_b8a6r"]
 [ext_resource type="Script" path="res://menu/projects/export/export_handler.gd" id="5_qthqx"]
 [ext_resource type="Script" path="res://menu/projects/export/export_progress_panel.gd" id="6_5afnv"]
-[ext_resource type="Texture2D" uid="uid://dmiwlb5w87nbk" path="res://menu/projects/recovered_icon.svg" id="6_k7bqp"]
-[ext_resource type="Texture2D" uid="uid://cwg218gfds8ys" path="res://menu/projects/unsaved_icon.svg" id="7_2rhru"]
+[ext_resource type="PackedScene" uid="uid://bxa3o7i04bb57" path="res://menu/projects/recovered_icon.tscn" id="6_vn5ml"]
+[ext_resource type="PackedScene" uid="uid://q4f3esthditc" path="res://menu/projects/unsaved_icon.tscn" id="7_0prkq"]
 [ext_resource type="Texture2D" uid="uid://bphdjjy1s8vl5" path="res://menu/projects/export_icon.svg" id="8_e514j"]
 [ext_resource type="Script" path="res://menu/projects/import/import_handler.gd" id="8_gtaak"]
 [ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/projects/thumbnail_loading.tres" id="9_rfehh"]
@@ -126,19 +126,11 @@ text_overrun_behavior = 4
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="RecoveredIcon" type="TextureRect" parent="MainMenu/ProjectPanel/ProjectInfo/IconBox"]
+[node name="RecoveredIcon" parent="MainMenu/ProjectPanel/ProjectInfo/IconBox" instance=ExtResource("6_vn5ml")]
 layout_mode = 2
-tooltip_text = "Recovered"
-texture = ExtResource("6_k7bqp")
-expand_mode = 2
-stretch_mode = 5
 
-[node name="UnsavedIcon" type="TextureRect" parent="MainMenu/ProjectPanel/ProjectInfo/IconBox"]
+[node name="UnsavedIcon" parent="MainMenu/ProjectPanel/ProjectInfo/IconBox" instance=ExtResource("7_0prkq")]
 layout_mode = 2
-tooltip_text = "Not Previously Saved"
-texture = ExtResource("7_2rhru")
-expand_mode = 2
-stretch_mode = 5
 
 [node name="Buttons" type="HBoxContainer" parent="MainMenu/ProjectPanel"]
 layout_mode = 1
@@ -155,6 +147,7 @@ offset_bottom = -64.0
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Import a project"
+mouse_default_cursor_shape = 2
 theme = ExtResource("1_ti7wl")
 script = ExtResource("3_hxtem")
 
@@ -187,6 +180,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Export the selected project"
+mouse_default_cursor_shape = 2
 theme = ExtResource("1_ti7wl")
 script = ExtResource("3_ijuv3")
 
@@ -296,6 +290,7 @@ offset_left = -0.167969
 offset_right = -0.167969
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 2
 texture = ExtResource("19_yudf6")
 expand_mode = 1
 stretch_mode = 5
