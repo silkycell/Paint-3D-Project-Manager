@@ -1,7 +1,7 @@
 extends Button
 class_name ProjectButton
 
-const THUMBNAIL_MISSING = preload("res://menu/projects/thumbnail_missing.png")
+const THUMBNAIL_MISSING = preload("res://menu/projects/assets/thumbnail_missing.png")
 
 @export var label:Label
 @export var thumbnail:TextureRect

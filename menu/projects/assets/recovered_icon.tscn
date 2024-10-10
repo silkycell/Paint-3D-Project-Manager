@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxa3o7i04bb57"]
 
-[ext_resource type="Texture2D" uid="uid://dmiwlb5w87nbk" path="res://menu/projects/recovered_icon.svg" id="1_i6s0k"]
+[ext_resource type="Texture2D" uid="uid://dmiwlb5w87nbk" path="res://menu/projects/assets/recovered_icon.svg" id="1_i6s0k"]
 
 [node name="RecoveredIcon" type="TextureRect"]
 tooltip_text = "Recovered"

@@ -2,9 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_lnuqr"]
 [ext_resource type="Script" path="res://menu/projects/project_button.gd" id="1_ocnbv"]
-[ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/projects/thumbnail_loading.tres" id="2_hjql8"]
-[ext_resource type="PackedScene" uid="uid://bxa3o7i04bb57" path="res://menu/projects/recovered_icon.tscn" id="4_ku1sf"]
-[ext_resource type="PackedScene" uid="uid://q4f3esthditc" path="res://menu/projects/unsaved_icon.tscn" id="5_64b0d"]
+[ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/projects/assets/thumbnail_loading.tres" id="2_hjql8"]
+[ext_resource type="PackedScene" uid="uid://bxa3o7i04bb57" path="res://menu/projects/assets/recovered_icon.tscn" id="4_ku1sf"]
+[ext_resource type="PackedScene" uid="uid://q4f3esthditc" path="res://menu/projects/assets/unsaved_icon.tscn" id="5_64b0d"]
 
 [node name="ProjectButton" type="Button" node_paths=PackedStringArray("label", "thumbnail", "recovered_icon", "unsaved_icon")]
 custom_minimum_size = Vector2(275, 56)
