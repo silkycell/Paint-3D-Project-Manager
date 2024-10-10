@@ -53,9 +53,9 @@ func _on_import_dialog_file_selected(path:String):
 	var project_folder_name = data_json["project_data"]["Path"]
 	project_folder_name = project_folder_name.erase(project_folder_name.find("Projects\\"), "Projects\\".length())
 	
-	if data_json.version > ExportHandler.JSON_VERSION:
+	if data_json.version > ProjectsJsonAPI.CURRENT_JSON_VERSION:
 		push_error("Current version is lesser than JSON version. Please use a more recent version of P3DPM to import this project."
-		, "\nCurrent Version: ", ExportHandler.JSON_VERSION, ", Project Version: ", data_json.version, ".")
+		, "\nCurrent Version: ", ProjectsJsonAPI.CURRENT_JSON_VERSION, ", Project Version: ", data_json.version, ".")
 		exit_import()
 		return
 	

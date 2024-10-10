@@ -1,5 +1,6 @@
 extends Node
 
+const CURRENT_JSON_VERSION:float = 1
 const PROJECTS_FOLDER_PATH_RELATIVE:String = "Packages/Microsoft.MSPaint_8wekyb3d8bbwe/LocalState/Projects"
 
 var LOCAL_APPDATA_PATH:String = OS.get_environment("LocalAppData")

@@ -1,7 +1,6 @@
 extends Control
 class_name ExportHandler
 
-const JSON_VERSION:float = 1
 const REPLACETEXT:String = "The file \"%s\" already exists."
 
 @onready var export_dialog = $ExportDialog
@@ -58,7 +57,7 @@ func export_project(project:Project, save_path:String):
 	var files_to_write = {}
 	
 	var data = {
-		"version": JSON_VERSION,
+		"version": ProjectsJsonAPI.CURRENT_JSON_VERSION,
 		"project_data": project.to_dict()
 	}
 	
