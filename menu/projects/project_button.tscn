@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://1ekevq728ude"]
+[gd_scene load_steps=6 format=3 uid="uid://1ekevq728ude"]
 
+[ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_lnuqr"]
 [ext_resource type="Script" path="res://menu/projects/project_button.gd" id="1_ocnbv"]
 [ext_resource type="Texture2D" uid="uid://dmiwlb5w87nbk" path="res://menu/projects/recovered_icon.svg" id="2_ckvyy"]
 [ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/projects/thumbnail_loading.tres" id="2_hjql8"]
@@ -12,6 +13,7 @@ anchor_right = 0.239
 anchor_bottom = 0.086
 offset_right = -0.328003
 offset_bottom = 0.271999
+theme = ExtResource("1_lnuqr")
 theme_type_variation = &"FlatButton"
 clip_text = true
 script = ExtResource("1_ocnbv")
@@ -65,7 +67,6 @@ offset_right = -7.0
 offset_bottom = 0.0239944
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 15
 text = "wwwwwwwwwwwwwwwwwwwwww"
 horizontal_alignment = 1
 vertical_alignment = 1

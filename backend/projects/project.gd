@@ -14,6 +14,12 @@ var version:float = 0
 var is_recovered:bool = false
 var is_previously_saved:bool = false
 
+var timestamp:float:
+	get:
+		return (date_time - 116444736000000000) / 10000000
+	set(value):
+		date_time = 10000000 * value + 116444736000000000
+
 var project_folder:String = "":
 	get:
 		return path.erase(path.find("Projects\\"), "Projects\\".length())

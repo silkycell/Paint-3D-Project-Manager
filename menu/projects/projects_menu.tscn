@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=20 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -6,9 +6,12 @@
 [ext_resource type="Script" path="res://menu/projects/project_panel.gd" id="2_qt3du"]
 [ext_resource type="Script" path="res://menu/projects/import/import_button.gd" id="3_hxtem"]
 [ext_resource type="Script" path="res://menu/projects/export/export_button.gd" id="3_ijuv3"]
+[ext_resource type="Script" path="res://menu/projects/project_info.gd" id="5_5k1ix"]
 [ext_resource type="Texture2D" uid="uid://dtwwh0dxlmuu5" path="res://menu/projects/import_icon.svg" id="5_b8a6r"]
 [ext_resource type="Script" path="res://menu/projects/export/export_handler.gd" id="5_qthqx"]
 [ext_resource type="Script" path="res://menu/projects/export/export_progress_panel.gd" id="6_5afnv"]
+[ext_resource type="Texture2D" uid="uid://dmiwlb5w87nbk" path="res://menu/projects/recovered_icon.svg" id="6_k7bqp"]
+[ext_resource type="Texture2D" uid="uid://cwg218gfds8ys" path="res://menu/projects/unsaved_icon.svg" id="7_2rhru"]
 [ext_resource type="Texture2D" uid="uid://bphdjjy1s8vl5" path="res://menu/projects/export_icon.svg" id="8_e514j"]
 [ext_resource type="Script" path="res://menu/projects/import/import_handler.gd" id="8_gtaak"]
 [ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/projects/thumbnail_loading.tres" id="9_rfehh"]
@@ -69,21 +72,62 @@ layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_qt3du")
 
-[node name="ProjectName" type="Label" parent="HBoxContainer/ProjectPanel"]
+[node name="ProjectInfo" type="VBoxContainer" parent="HBoxContainer/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.998
-anchor_bottom = 0.201
-offset_left = 33.0
-offset_top = 3.0
-offset_right = -0.186035
-offset_bottom = -0.248001
+anchor_right = 1.0
+anchor_bottom = 0.574
+offset_left = 30.0
+offset_top = 22.0
+offset_bottom = 0.0480042
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_5k1ix")
+
+[node name="ProjectName" type="Label" parent="HBoxContainer/ProjectPanel/ProjectInfo"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-theme_override_font_sizes/font_size = 40
 text = "Name"
 vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
+
+[node name="ProjectPath" type="Label" parent="HBoxContainer/ProjectPanel/ProjectInfo"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Folder: FolderName (999)"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="ProjectData" type="Label" parent="HBoxContainer/ProjectPanel/ProjectInfo"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Last Modified: 01/01/1900"
+vertical_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="IconBox" type="HBoxContainer" parent="HBoxContainer/ProjectPanel/ProjectInfo"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="RecoveredIcon" type="TextureRect" parent="HBoxContainer/ProjectPanel/ProjectInfo/IconBox"]
+layout_mode = 2
+tooltip_text = "Recovered"
+texture = ExtResource("6_k7bqp")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="UnsavedIcon" type="TextureRect" parent="HBoxContainer/ProjectPanel/ProjectInfo/IconBox"]
+layout_mode = 2
+tooltip_text = "Not Previously Saved"
+texture = ExtResource("7_2rhru")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Buttons" type="HBoxContainer" parent="HBoxContainer/ProjectPanel"]
 layout_mode = 1

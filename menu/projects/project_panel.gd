@@ -3,14 +3,14 @@ class_name ProjectPanel
 
 const THUMBNAIL_LOADING = preload("res://menu/projects/thumbnail_loading.tres")
 
-@onready var project_name = $ProjectName
+@onready var project_info = $ProjectInfo
 @onready var thumbnail = $Thumbnail
 
 var selected_project:Project:
 	set(value):
 		selected_project = value
 		
-		project_name.text = selected_project.name
+		project_info.select_project(selected_project)
 		
 		if selected_project.thumbnail == null:
 			thumbnail.texture = THUMBNAIL_LOADING
