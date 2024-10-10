@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=22 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://menu/projects/import/import_progress_panel.gd" id="10_1db86"]
 [ext_resource type="Script" path="res://menu/projects/tasks/custom_confirmation_dialog.gd" id="10_wty4p"]
 [ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/projects/tasks/progress_panel.tscn" id="12_cl2e7"]
+[ext_resource type="Script" path="res://menu/projects/settings_button.gd" id="13_v52yi"]
+[ext_resource type="Texture2D" uid="uid://dychp88l7omd3" path="res://menu/projects/settings_icon.svg" id="19_yudf6"]
 
 [sub_resource type="Theme" id="Theme_txxj5"]
 
@@ -30,7 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ti7wl")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MainMenu" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,19 +41,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="ProjectsList" type="VBoxContainer" parent="HBoxContainer"]
+[node name="ProjectsList" type="VBoxContainer" parent="MainMenu"]
 custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="SearchBar" type="LineEdit" parent="HBoxContainer/ProjectsList"]
+[node name="SearchBar" type="LineEdit" parent="MainMenu/ProjectsList"]
 layout_mode = 2
 theme = ExtResource("1_ti7wl")
 placeholder_text = "Search"
 caret_blink = true
 script = ExtResource("2_blyf4")
 
-[node name="ProjectsListContainer" type="ScrollContainer" parent="HBoxContainer/ProjectsList"]
+[node name="ProjectsListContainer" type="ScrollContainer" parent="MainMenu/ProjectsList"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -60,19 +62,19 @@ follow_focus = true
 script = ExtResource("1_wdfsu")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ProjectsList/ProjectsListContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/ProjectsList/ProjectsListContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 2
 
-[node name="ProjectPanel" type="Panel" parent="HBoxContainer"]
+[node name="ProjectPanel" type="Panel" parent="MainMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_qt3du")
 
-[node name="ProjectInfo" type="VBoxContainer" parent="HBoxContainer/ProjectPanel"]
+[node name="ProjectInfo" type="VBoxContainer" parent="MainMenu/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -84,7 +86,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_5k1ix")
 
-[node name="ProjectName" type="Label" parent="HBoxContainer/ProjectPanel/ProjectInfo"]
+[node name="ProjectName" type="Label" parent="MainMenu/ProjectPanel/ProjectInfo"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
@@ -93,7 +95,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="ProjectPath" type="Label" parent="HBoxContainer/ProjectPanel/ProjectInfo"]
+[node name="ProjectPath" type="Label" parent="MainMenu/ProjectPanel/ProjectInfo"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
@@ -102,7 +104,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="ProjectData" type="Label" parent="HBoxContainer/ProjectPanel/ProjectInfo"]
+[node name="ProjectData" type="Label" parent="MainMenu/ProjectPanel/ProjectInfo"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
@@ -111,25 +113,25 @@ vertical_alignment = 1
 autowrap_mode = 3
 text_overrun_behavior = 4
 
-[node name="IconBox" type="HBoxContainer" parent="HBoxContainer/ProjectPanel/ProjectInfo"]
+[node name="IconBox" type="HBoxContainer" parent="MainMenu/ProjectPanel/ProjectInfo"]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="RecoveredIcon" type="TextureRect" parent="HBoxContainer/ProjectPanel/ProjectInfo/IconBox"]
+[node name="RecoveredIcon" type="TextureRect" parent="MainMenu/ProjectPanel/ProjectInfo/IconBox"]
 layout_mode = 2
 tooltip_text = "Recovered"
 texture = ExtResource("6_k7bqp")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="UnsavedIcon" type="TextureRect" parent="HBoxContainer/ProjectPanel/ProjectInfo/IconBox"]
+[node name="UnsavedIcon" type="TextureRect" parent="MainMenu/ProjectPanel/ProjectInfo/IconBox"]
 layout_mode = 2
 tooltip_text = "Not Previously Saved"
 texture = ExtResource("7_2rhru")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Buttons" type="HBoxContainer" parent="HBoxContainer/ProjectPanel"]
+[node name="Buttons" type="HBoxContainer" parent="MainMenu/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.779
@@ -140,14 +142,14 @@ offset_top = 0.207977
 offset_right = -0.14801
 offset_bottom = -64.0
 
-[node name="ImportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons"]
+[node name="ImportButton" type="Button" parent="MainMenu/ProjectPanel/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Import a project"
 theme = ExtResource("1_ti7wl")
 script = ExtResource("3_hxtem")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ProjectPanel/Buttons/ImportButton"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/ProjectPanel/Buttons/ImportButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,14 +159,14 @@ grow_vertical = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/ProjectPanel/Buttons/ImportButton/HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="MainMenu/ProjectPanel/Buttons/ImportButton/HBoxContainer"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 texture = ExtResource("5_b8a6r")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HBoxContainer/ProjectPanel/Buttons/ImportButton/HBoxContainer"]
+[node name="Label" type="Label" parent="MainMenu/ProjectPanel/Buttons/ImportButton/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_ti7wl")
 theme_override_font_sizes/font_size = 25
@@ -172,14 +174,14 @@ text = "Import"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons"]
+[node name="ExportButton" type="Button" parent="MainMenu/ProjectPanel/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Export the selected project"
 theme = ExtResource("1_ti7wl")
 script = ExtResource("3_ijuv3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ProjectPanel/Buttons/ExportButton"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/ProjectPanel/Buttons/ExportButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,14 +191,14 @@ grow_vertical = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Icon" type="TextureRect" parent="HBoxContainer/ProjectPanel/Buttons/ExportButton/HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="MainMenu/ProjectPanel/Buttons/ExportButton/HBoxContainer"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 texture = ExtResource("8_e514j")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="HBoxContainer/ProjectPanel/Buttons/ExportButton/HBoxContainer"]
+[node name="Label" type="Label" parent="MainMenu/ProjectPanel/Buttons/ExportButton/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_ti7wl")
 theme_override_font_sizes/font_size = 25
@@ -205,7 +207,7 @@ text = "Export
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Thumbnail" type="TextureRect" parent="HBoxContainer/ProjectPanel"]
+[node name="Thumbnail" type="TextureRect" parent="MainMenu/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.672
@@ -219,6 +221,72 @@ offset_bottom = -66.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_rfehh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SettingsContainer" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SettingsMenuContainer" type="Control" parent="SettingsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingsMenu" type="TabContainer" parent="SettingsContainer/SettingsMenuContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.114
+anchor_top = 0.1
+anchor_right = 0.886
+anchor_bottom = 0.9
+offset_left = -0.328003
+offset_top = 0.199997
+offset_right = 0.327942
+offset_bottom = -0.200012
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 0
+
+[node name="thos is settings just trust me on this okay?" type="GridContainer" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="SettingsButton" type="Button" parent="SettingsContainer" node_paths=PackedStringArray("settings_menu")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.939
+anchor_right = 1.0
+anchor_bottom = 0.108
+offset_left = 0.439941
+offset_right = 0.167969
+offset_bottom = 0.0159988
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Open settings"
+toggle_mode = true
+script = ExtResource("13_v52yi")
+settings_menu = NodePath("../SettingsMenuContainer")
+
+[node name="TextureRect" type="TextureRect" parent="SettingsContainer/SettingsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.167969
+offset_right = -0.167969
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("19_yudf6")
 expand_mode = 1
 stretch_mode = 5
 
@@ -294,8 +362,9 @@ anchors_preset = -1
 offset_bottom = -49.0
 script = ExtResource("10_1db86")
 
-[connection signal="text_changed" from="HBoxContainer/ProjectsList/SearchBar" to="HBoxContainer/ProjectsList/SearchBar" method="_on_text_changed"]
-[connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons/ImportButton" to="HBoxContainer/ProjectPanel/Buttons/ImportButton" method="_on_pressed"]
-[connection signal="pressed" from="HBoxContainer/ProjectPanel/Buttons/ExportButton" to="HBoxContainer/ProjectPanel/Buttons/ExportButton" method="_on_pressed"]
+[connection signal="text_changed" from="MainMenu/ProjectsList/SearchBar" to="MainMenu/ProjectsList/SearchBar" method="_on_text_changed"]
+[connection signal="pressed" from="MainMenu/ProjectPanel/Buttons/ImportButton" to="MainMenu/ProjectPanel/Buttons/ImportButton" method="_on_pressed"]
+[connection signal="pressed" from="MainMenu/ProjectPanel/Buttons/ExportButton" to="MainMenu/ProjectPanel/Buttons/ExportButton" method="_on_pressed"]
+[connection signal="toggled" from="SettingsContainer/SettingsButton" to="SettingsContainer/SettingsButton" method="_on_toggled"]
 [connection signal="file_selected" from="ExportHandler/ExportDialog" to="ExportHandler" method="_on_export_dialog_file_selected"]
 [connection signal="file_selected" from="ImportHandler/ImportDialog" to="ImportHandler" method="_on_import_dialog_file_selected"]
