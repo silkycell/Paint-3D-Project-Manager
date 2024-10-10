@@ -1,0 +1,53 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://0ljnbaduhs78"]
+
+[sub_resource type="SystemFont" id="SystemFont_bpd8t"]
+font_names = PackedStringArray("Segoe UI", "Sans-Serif")
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xd3pw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2i70"]
+bg_color = Color(0.752941, 0.760784, 0.760784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.588235, 0.588235, 0.588235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qswww"]
+bg_color = Color(0.752941, 0.760784, 0.760784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_topp1"]
+bg_color = Color(0.564706, 0.568627, 0.572549, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_fm5bq"]
+font_names = PackedStringArray("Segoe UI", "Sans-Serif")
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_leeyg"]
+bg_color = Color(0.941176, 0.94902, 0.952941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.392157, 0.713726, 1)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 14
+Button/fonts/font = SubResource("SystemFont_bpd8t")
+Button/styles/focus = SubResource("StyleBoxEmpty_xd3pw")
+Button/styles/hover = SubResource("StyleBoxFlat_j2i70")
+Button/styles/normal = SubResource("StyleBoxFlat_qswww")
+Button/styles/pressed = SubResource("StyleBoxFlat_topp1")
+HeaderLarge/font_sizes/font_size = 22
+HeaderMedium/font_sizes/font_size = 14
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/fonts/font = SubResource("SystemFont_fm5bq")
+Panel/styles/panel = SubResource("StyleBoxFlat_leeyg")

@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmijcfdt5mip"]
+
+[ext_resource type="Theme" uid="uid://0ljnbaduhs78" path="res://menu/popup_theme.tres" id="1_og2sa"]
+[ext_resource type="Script" path="res://menu/projects/popup_box.gd" id="2_nvm0s"]
+
+[node name="PopupBox" type="Panel" node_paths=PackedStringArray("button_hbox", "title_label", "text_label")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -88.0
+offset_right = 254.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_og2sa")
+script = ExtResource("2_nvm0s")
+button_hbox = NodePath("ButtonHBox")
+title_label = NodePath("Title")
+text_label = NodePath("Text")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 483.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "Title"
+text_overrun_behavior = 3
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.46
+anchor_bottom = 0.46
+offset_left = 27.0
+offset_top = -9.96
+offset_right = 482.0
+offset_bottom = 10.04
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderMedium"
+text = "Text"
+
+[node name="ButtonHBox" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.642
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 0.00799561
+offset_right = -25.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2

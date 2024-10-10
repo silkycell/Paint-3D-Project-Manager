@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://eno3kw6ga4uf"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://eno3kw6ga4uf"]
 
 [sub_resource type="SystemFont" id="SystemFont_fvwaa"]
 font_names = PackedStringArray("Segoe UI", "Sans-Serif")
 hinting = 2
 subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3wvy8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s30oo"]
 bg_color = Color(0.835294, 0.847059, 0.870588, 1)
@@ -101,6 +103,7 @@ Button/colors/font_hover_color = Color(0.301961, 0.301961, 0.454902, 1)
 Button/colors/font_pressed_color = Color(0.301961, 0.301961, 0.454902, 1)
 Button/constants/icon_max_width = 25
 Button/fonts/font = SubResource("SystemFont_fvwaa")
+Button/styles/focus = SubResource("StyleBoxEmpty_3wvy8")
 Button/styles/hover = SubResource("StyleBoxFlat_s30oo")
 Button/styles/normal = SubResource("StyleBoxFlat_5mbye")
 Button/styles/pressed = SubResource("StyleBoxFlat_xf5y8")

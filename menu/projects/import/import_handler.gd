@@ -1,10 +1,10 @@
 extends Control
 class_name ImportHandler
 
-const REPLACETEXT:String = "A project with the folder \"%s\" already exists.\nDo you want to replace it?"
+const REPLACETEXT:String = "A project with the folder \"%s\" already exists."
 
 @onready var import_dialog := $ImportDialog
-@onready var replace_project_confirmation = $ReplaceProjectConfirmation
+@onready var replace_project_popup = $ReplaceProjectPopup
 
 var import_thread:Thread
 
@@ -13,7 +13,6 @@ signal finished_importing
 
 func _ready():
 	import_dialog.canceled.connect(exit_import)
-	replace_project_confirmation.add_button("Replace", false, "replace")
 	hide()
 
 func begin_import():
@@ -63,18 +62,18 @@ func _on_import_dialog_file_selected(path:String):
 	# this code is stupid, if theres a way to un-stupid it please let me know
 	var should_continue = true
 	if ProjectsJsonAPI.get_project_from_folder(project_folder_name) != null:
-		replace_project_confirmation.dialog_text = REPLACETEXT % project_folder_name
-		replace_project_confirmation.visible = true
+		replace_project_popup.text = REPLACETEXT % project_folder_name
+		replace_project_popup.visible = true
 		
-		var choice = await replace_project_confirmation.choice_selected
+		var choice = await replace_project_popup.choice_selected
 		
 		match choice:
 			"cancel":
 				exit_import()
 				should_continue = false
-			"replace":
+			"replace project":
 				ProjectsJsonAPI.projects.erase(ProjectsJsonAPI.get_project_from_folder(project_folder_name))
-			"confirm": # create folder
+			"create new folder":
 				var project_folder_name_copy = project_folder_name + " (1)"
 				
 				var idx = 1

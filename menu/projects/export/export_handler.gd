@@ -2,10 +2,10 @@ extends Control
 class_name ExportHandler
 
 const JSON_VERSION:float = 1
-const REPLACETEXT:String = "The file \"%s\" already exists.\nDo you want to replace it?"
+const REPLACETEXT:String = "The file \"%s\" already exists."
 
 @onready var export_dialog = $ExportDialog
-@onready var replace_file_confirmation = $ReplaceFileConfirmation
+@onready var replace_file_popup = $ReplaceFilePopup
 
 var project_to_export:Project
 var export_thread:Thread
@@ -34,10 +34,10 @@ func _on_export_dialog_file_selected(path:String):
 	# this code is stupid, if theres a way to un-stupid it please let me know
 	var should_continue = true
 	if FileAccess.file_exists(path):
-		replace_file_confirmation.dialog_text = REPLACETEXT % path
-		replace_file_confirmation.visible = true
+		replace_file_popup.title = REPLACETEXT % path.get_file()
+		replace_file_popup.visible = true
 		
-		var choice = await replace_file_confirmation.choice_selected
+		var choice = await replace_file_popup.choice_selected
 		
 		if choice == "cancel":
 			exit_export()
