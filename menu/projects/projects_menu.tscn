@@ -99,6 +99,7 @@ offset_bottom = -64.0
 [node name="ImportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Import a project"
 theme = ExtResource("1_ti7wl")
 script = ExtResource("3_hxtem")
 
@@ -130,6 +131,7 @@ vertical_alignment = 1
 [node name="ExportButton" type="Button" parent="HBoxContainer/ProjectPanel/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "Export the selected project"
 theme = ExtResource("1_ti7wl")
 script = ExtResource("3_ijuv3")
 
