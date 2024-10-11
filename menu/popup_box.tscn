@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmijcfdt5mip"]
 
 [ext_resource type="Theme" uid="uid://0ljnbaduhs78" path="res://menu/popup_theme.tres" id="1_og2sa"]
-[ext_resource type="Script" path="res://menu/projects/popup_box.gd" id="2_nvm0s"]
+[ext_resource type="Script" path="res://menu/popup_box.gd" id="2_nvm0s"]
 
 [node name="PopupBox" type="Panel" node_paths=PackedStringArray("button_hbox", "title_label", "text_label")]
 anchors_preset = 8

@@ -34,6 +34,7 @@ func _ready():
 	_regen_buttons()
 
 func _regen_buttons():
+	if button_hbox == null: return
 	if buttons == null: buttons = []
 	
 	for child in button_hbox.get_children():

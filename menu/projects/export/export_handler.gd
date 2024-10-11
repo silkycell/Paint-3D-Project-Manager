@@ -2,6 +2,7 @@ extends Control
 class_name ExportHandler
 
 const REPLACETEXT:String = "The file \"%s\" already exists."
+const POPUP_BOX = preload("res://menu/popup_box.tscn")
 
 @onready var export_dialog = $ExportDialog
 @onready var replace_file_popup = $ReplaceFilePopup
@@ -25,6 +26,21 @@ func exit_export():
 	project_to_export = null
 	export_dialog.visible = false
 	visible = false
+
+func display_error(title:String, content:String):
+	var error_box = POPUP_BOX.instantiate()
+	error_box.title = title
+	error_box.text = content
+	
+	# ???????????????
+	error_box.button_options.clear()
+	error_box.button_options.append("Ok")
+	
+	add_child(error_box)
+	
+	await error_box.choice_selected
+	
+	exit_export()
 
 func _on_export_dialog_file_selected(path:String):
 	if path.get_extension() == "":
@@ -50,6 +66,10 @@ func _on_export_dialog_file_selected(path:String):
 		await finished_exporting
 		
 		exit_export()
+
+# im lazy
+func display_error_deferred(title:String, text:String):
+	call_deferred("display_error", title, text)
 
 func export_project(project:Project, save_path:String):
 	call_deferred("emit_signal", "export_thread_update", "start", {"project": project.name})
@@ -80,7 +100,8 @@ func export_project(project:Project, save_path:String):
 			
 			file_name = dir_access.get_next()
 	else:
-		push_error("Error accessing ", project_path, " Error Code:", DirAccess.get_open_error())
+		project_path = project_path.replacen(ProjectsJsonAPI.LOCAL_APPDATA_PATH, "%LOCALAPPDATA%")
+		display_error_deferred("Error Code: " + str(DirAccess.get_open_error()), "Error accessing path:\n" + project_path)
 		return
 	
 	dir_access.list_dir_end()
@@ -89,8 +110,8 @@ func export_project(project:Project, save_path:String):
 	var error := zip_packer.open(save_path, ZIPPacker.APPEND_CREATE)
 	
 	if error != OK:
-		push_error("Error creating Zip at ", save_path, " Error Code:", error)
-		return error
+		display_error_deferred("Error Code: " + str(error), "Error creating Zip at path:\n" + save_path)
+		return
 	
 	var idx = 0
 	for key in files_to_write.keys():

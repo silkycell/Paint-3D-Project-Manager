@@ -2,6 +2,7 @@ extends Control
 class_name ImportHandler
 
 const REPLACETEXT:String = "A project with the folder \"%s\" already exists."
+const POPUP_BOX = preload("res://menu/popup_box.tscn")
 
 @onready var import_dialog := $ImportDialog
 @onready var replace_project_popup = $ReplaceProjectPopup
@@ -23,13 +24,27 @@ func exit_import():
 	import_dialog.visible = false
 	visible = false
 
+func display_error(title:String, content:String):
+	var error_box = POPUP_BOX.instantiate()
+	error_box.title = title
+	error_box.text = content
+	
+	# ???????????????
+	error_box.button_options.clear()
+	error_box.button_options.append("Ok")
+	
+	add_child(error_box)
+	
+	await error_box.choice_selected
+	
+	exit_import()
+
 func _on_import_dialog_file_selected(path:String):
 	var reader := ZIPReader.new()
 	var error := reader.open(path)
 	
 	if error != OK:
-		push_error("Error reading ZIP ", path, " Error Code:", error)
-		exit_import()
+		display_error("Error Code: " + str(error), "Error reading ZIP " + path)
 		return
 	
 	var data_json
@@ -39,8 +54,7 @@ func _on_import_dialog_file_selected(path:String):
 		var export_projects = JSON.parse_string(reader.read_file("exportProjects.json").get_string_from_ascii())
 		
 		if export_projects.size() > 1:
-			push_error("Support for multi-project P3Ds is not yet implemented.")
-			exit_import()
+			display_error("Import Error", "Support for multi-project P3Ds is not yet implemented.")
 			return
 		
 		data_json = {
@@ -54,9 +68,9 @@ func _on_import_dialog_file_selected(path:String):
 	project_folder_name = project_folder_name.erase(project_folder_name.find("Projects\\"), "Projects\\".length())
 	
 	if data_json.version > ProjectsJsonAPI.CURRENT_JSON_VERSION:
-		push_error("Current version is lesser than JSON version. Please use a more recent version of P3DPM to import this project."
-		, "\nCurrent Version: ", ProjectsJsonAPI.CURRENT_JSON_VERSION, ", Project Version: ", data_json.version, ".")
-		exit_import()
+		display_error("Current version is lesser than JSON version."
+		, "\n Please use a more recent version of P3DPM to import this project." 
+		+ "\n(Current Version: " + str(ProjectsJsonAPI.CURRENT_JSON_VERSION) + " Project Version: " + str(data_json.version) + ")")
 		return
 	
 	# this code is stupid, if theres a way to un-stupid it please let me know
