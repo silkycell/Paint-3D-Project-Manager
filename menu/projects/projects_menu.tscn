@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=22 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -20,6 +20,14 @@
 [ext_resource type="Script" path="res://menu/projects/settings_button.gd" id="13_v52yi"]
 [ext_resource type="PackedScene" uid="uid://cmijcfdt5mip" path="res://menu/popup_box.tscn" id="17_j3wdq"]
 [ext_resource type="Texture2D" uid="uid://dychp88l7omd3" path="res://menu/projects/assets/settings_icon.svg" id="19_yudf6"]
+
+[sub_resource type="GDScript" id="GDScript_u7u8r"]
+resource_name = "VersionNumberSetter"
+script/source = "extends Label
+
+func _ready():
+	text = \"v\" + ProjectSettings.get_setting(\"application/config/version\")
+"
 
 [node name="ProjectsMenu" type="Control"]
 layout_mode = 3
@@ -132,12 +140,11 @@ layout_mode = 2
 [node name="Buttons" type="HBoxContainer" parent="MainMenu/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.779
-anchor_right = 0.484
+anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 38.0
-offset_top = 0.207977
-offset_right = -0.14801
+offset_top = -143.0
+offset_right = 424.32
 offset_bottom = -64.0
 
 [node name="ImportButton" type="Button" parent="MainMenu/ProjectPanel/Buttons"]
@@ -210,12 +217,12 @@ vertical_alignment = 1
 [node name="Thumbnail" type="TextureRect" parent="MainMenu/ProjectPanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.672
-anchor_top = 0.671
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.215942
-offset_top = 0.191986
+offset_left = -287.44
+offset_top = -213.0
 offset_right = -35.0
 offset_bottom = -66.0
 grow_horizontal = 2
@@ -223,6 +230,23 @@ grow_vertical = 2
 texture = ExtResource("9_rfehh")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="VersionNumber" type="Label" parent="MainMenu/ProjectPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.0
+offset_top = -26.0
+offset_right = -5.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v99.99.99"
+horizontal_alignment = 2
+script = SubResource("GDScript_u7u8r")
 
 [node name="SettingsContainer" type="Control" parent="."]
 layout_mode = 1
@@ -280,13 +304,13 @@ settings_menu = NodePath("../SettingsMenuContainer")
 
 [node name="TextureRect" type="TextureRect" parent="SettingsContainer/SettingsButton"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.167969
+offset_left = -70.168
 offset_right = -0.167969
-grow_horizontal = 2
-grow_vertical = 2
+offset_bottom = 70.0
+grow_horizontal = 0
 mouse_default_cursor_shape = 2
 texture = ExtResource("19_yudf6")
 expand_mode = 1
