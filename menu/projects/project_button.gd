@@ -29,4 +29,4 @@ func load_thumbnail():
 	thumbnail.texture = await project.get_thumbnail()
 
 func _on_pressed():
-	GlobalSignalHandler.project_selected.emit(project)
+	GlobalSignalHandler.selected_project = project

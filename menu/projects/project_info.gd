@@ -14,23 +14,19 @@ const PROJECT_SIZE_TEMPLATE = "Size: %s"
 @onready var recovered_icon = $IconBox/RecoveredIcon
 @onready var unsaved_icon = $IconBox/UnsavedIcon
 
-var selected_project:Project
-
 func select_project(project:Project):
-	selected_project = project
-	
-	project_name.text = selected_project.name
-	project_path.text = PROJECT_PATH_TEMPLATE % selected_project.project_folder
-	project_data.text = get_time_string(selected_project)
+	project_name.text = project.name
+	project_path.text = PROJECT_PATH_TEMPLATE % project.project_folder
+	project_data.text = get_time_string(project)
 	project_size.text = PROJECT_SIZE_TEMPLATE % "Loading..."
 	
-	recovered_icon.visible = selected_project.is_recovered
-	unsaved_icon.visible = !selected_project.is_previously_saved
+	recovered_icon.visible = project.is_recovered
+	unsaved_icon.visible = !project.is_previously_saved
 	
-	var proj_size = await selected_project.get_size()
+	var proj_size = await project.get_size()
 	
 	# JIC calculation completes after we switched projects
-	if project == selected_project:
+	if project == GlobalSignalHandler.selected_project:
 		project_size.text = PROJECT_SIZE_TEMPLATE % String.humanize_size(proj_size)
 
 func get_time_string(project:Project):

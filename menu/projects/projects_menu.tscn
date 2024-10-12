@@ -1,22 +1,21 @@
-[gd_scene load_steps=22 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=21 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
 [ext_resource type="Script" path="res://menu/projects/search_bar.gd" id="2_blyf4"]
 [ext_resource type="Script" path="res://menu/projects/project_panel.gd" id="2_qt3du"]
-[ext_resource type="Script" path="res://menu/projects/import/import_button.gd" id="3_hxtem"]
-[ext_resource type="Script" path="res://menu/projects/export/export_button.gd" id="3_ijuv3"]
+[ext_resource type="Script" path="res://menu/projects/actions/action_button.gd" id="3_hxtem"]
 [ext_resource type="Script" path="res://menu/projects/project_info.gd" id="5_5k1ix"]
 [ext_resource type="Texture2D" uid="uid://dtwwh0dxlmuu5" path="res://menu/projects/assets/import_icon.svg" id="5_b8a6r"]
-[ext_resource type="Script" path="res://menu/projects/export/export_handler.gd" id="5_qthqx"]
-[ext_resource type="Script" path="res://menu/projects/export/export_progress_panel.gd" id="6_5afnv"]
+[ext_resource type="Script" path="res://menu/projects/actions/export/export_handler.gd" id="5_qthqx"]
+[ext_resource type="Script" path="res://menu/projects/actions/export/export_progress_panel.gd" id="6_5afnv"]
 [ext_resource type="PackedScene" uid="uid://bxa3o7i04bb57" path="res://menu/projects/assets/recovered_icon.tscn" id="6_vn5ml"]
 [ext_resource type="PackedScene" uid="uid://q4f3esthditc" path="res://menu/projects/assets/unsaved_icon.tscn" id="7_0prkq"]
 [ext_resource type="Texture2D" uid="uid://bphdjjy1s8vl5" path="res://menu/projects/assets/export_icon.svg" id="8_e514j"]
-[ext_resource type="Script" path="res://menu/projects/import/import_handler.gd" id="8_gtaak"]
+[ext_resource type="Script" path="res://menu/projects/actions/import/import_handler.gd" id="8_gtaak"]
 [ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/projects/assets/thumbnail_loading.tres" id="9_rfehh"]
-[ext_resource type="Script" path="res://menu/projects/import/import_progress_panel.gd" id="10_1db86"]
-[ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/projects/tasks/progress_panel.tscn" id="12_cl2e7"]
+[ext_resource type="Script" path="res://menu/projects/actions/import/import_progress_panel.gd" id="10_1db86"]
+[ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/projects/actions/progress_panel/progress_panel.tscn" id="12_cl2e7"]
 [ext_resource type="Script" path="res://menu/projects/settings_button.gd" id="13_v52yi"]
 [ext_resource type="PackedScene" uid="uid://cmijcfdt5mip" path="res://menu/popup_box.tscn" id="17_j3wdq"]
 [ext_resource type="Texture2D" uid="uid://dychp88l7omd3" path="res://menu/projects/assets/settings_icon.svg" id="19_yudf6"]
@@ -147,13 +146,14 @@ offset_top = -143.0
 offset_right = 424.32
 offset_bottom = -64.0
 
-[node name="ImportButton" type="Button" parent="MainMenu/ProjectPanel/Buttons"]
+[node name="ImportButton" type="Button" parent="MainMenu/ProjectPanel/Buttons" node_paths=PackedStringArray("target_action")]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Import a project"
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ti7wl")
 script = ExtResource("3_hxtem")
+target_action = NodePath("../../../../ImportHandler")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/ProjectPanel/Buttons/ImportButton"]
 layout_mode = 1
@@ -180,13 +180,14 @@ text = "Import"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExportButton" type="Button" parent="MainMenu/ProjectPanel/Buttons"]
+[node name="ExportButton" type="Button" parent="MainMenu/ProjectPanel/Buttons" node_paths=PackedStringArray("target_action")]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Export the selected project"
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_ti7wl")
-script = ExtResource("3_ijuv3")
+script = ExtResource("3_hxtem")
+target_action = NodePath("../../../../ExportHandler")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/ProjectPanel/Buttons/ExportButton"]
 layout_mode = 1

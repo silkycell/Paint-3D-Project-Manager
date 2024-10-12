@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cyxb6jh7o5skw"]
 
-[ext_resource type="PackedScene" uid="uid://n3lfb6rm53uc" path="res://menu/projects/tasks/labelled_progress_bar.tscn" id="2_ttfj7"]
+[ext_resource type="PackedScene" uid="uid://n3lfb6rm53uc" path="res://menu/projects/actions/progress_panel/labelled_progress_bar.tscn" id="2_ttfj7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu2ph"]
 bg_color = Color(0.255659, 0.255659, 0.255659, 1)

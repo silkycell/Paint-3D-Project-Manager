@@ -1,46 +1,22 @@
-extends Control
+extends ActionHandler
 class_name ExportHandler
 
 const REPLACETEXT:String = "The file \"%s\" already exists."
-const POPUP_BOX = preload("res://menu/popup_box.tscn")
 
 @onready var export_dialog = $ExportDialog
 @onready var replace_file_popup = $ReplaceFilePopup
 
-var project_to_export:Project
-var export_thread:Thread
-
-signal export_thread_update
-signal finished_exporting
-
 func _ready():
-	export_dialog.canceled.connect(exit_export)
-	hide()
+	export_dialog.canceled.connect(exit_action)
+	super()
 
-func begin_export(project:Project):
-	visible = true
-	project_to_export = project
+func begin_action(project:Project = null):
+	super(project)
 	export_dialog.visible = true
 
-func exit_export():
-	project_to_export = null
+func exit_action():
+	super()
 	export_dialog.visible = false
-	visible = false
-
-func display_error(title:String, content:String):
-	var error_box = POPUP_BOX.instantiate()
-	error_box.title = title
-	error_box.text = content
-	
-	# ???????????????
-	error_box.button_options.clear()
-	error_box.button_options.append("Ok")
-	
-	add_child(error_box)
-	
-	await error_box.choice_selected
-	
-	exit_export()
 
 func _on_export_dialog_file_selected(path:String):
 	if path.get_extension() == "":
@@ -55,24 +31,20 @@ func _on_export_dialog_file_selected(path:String):
 		var choice = await replace_file_popup.choice_selected
 		
 		if choice == "cancel":
-			exit_export()
+			exit_action()
 			should_continue = false
 	
 	if should_continue:
-		if export_thread != null: export_thread.wait_to_finish()
-		export_thread = Thread.new()
-		export_thread.start(export_project.bind(project_to_export, path))
+		if action_thread != null: action_thread.wait_to_finish()
+		action_thread = Thread.new()
+		action_thread.start(export_project.bind(selected_project, path))
 		
-		await finished_exporting
+		await finished_action
 		
-		exit_export()
-
-# im lazy
-func display_error_deferred(title:String, text:String):
-	call_deferred("display_error", title, text)
+		exit_action()
 
 func export_project(project:Project, save_path:String):
-	call_deferred("emit_signal", "export_thread_update", "start", {"project": project.name})
+	call_deferred("emit_signal", "action_thread_update", "start", {"project": project.name})
 	var project_path = project.absolute_project_folder
 	var files_to_write = {}
 	
@@ -92,7 +64,7 @@ func export_project(project:Project, save_path:String):
 		while file_name != "":
 			if !dir_access.current_is_dir():
 				count += 1
-				call_deferred("emit_signal", "export_thread_update", "index", {
+				call_deferred("emit_signal", "action_thread_update", "index", {
 					"count" = count,
 					"project" = project.name
 				})
@@ -115,7 +87,7 @@ func export_project(project:Project, save_path:String):
 	
 	var idx = 0
 	for key in files_to_write.keys():
-		call_deferred("emit_signal", "export_thread_update", "write", {
+		call_deferred("emit_signal", "action_thread_update", "write", {
 			"size": files_to_write.size(),
 			"idx": idx,
 			"file": key,
@@ -126,8 +98,5 @@ func export_project(project:Project, save_path:String):
 		zip_packer.write_file(files_to_write[key])
 		idx += 1
 	
-	call_deferred("emit_signal", "export_thread_update", "finish", {})
-	call_deferred("emit_signal", "finished_exporting")
-
-func _exit_tree():
-	if export_thread != null: export_thread.wait_to_finish()
+	call_deferred("emit_signal", "action_thread_update", "finish", {})
+	call_deferred("emit_signal", "finished_action")

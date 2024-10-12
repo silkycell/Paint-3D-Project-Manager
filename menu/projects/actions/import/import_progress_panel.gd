@@ -5,7 +5,7 @@ extends Panel
 @onready var labelled_progress_bar = $LabelledProgressBar
 
 func _ready():
-	get_node("%ExportHandler").export_thread_update.connect(_on_thread_update)
+	get_node("%ImportHandler").action_thread_update.connect(_on_thread_update)
 	hide()
 
 func _on_thread_update(type, data):
@@ -16,16 +16,16 @@ func _on_thread_update(type, data):
 			info_label.show()
 			show()
 			
-			info_label.text = "Exporting \"%s\"..." % data.project
-		"index":
+			info_label.text = "Importing \"%s\"..." % data.project
+		"delete":
 			labelled_progress_bar.hide()
 			task_label.show()
 			info_label.show()
 			show()
 			
-			info_label.text = "Exporting \"%s\"..." % data.project
-			task_label.text = "Indexing Files... (" + str(data.count) + ")"
-		"write":
+			info_label.text = "Importing \"%s\"..." % data.project
+			info_label.text = "Deleting old files..."
+		"import":
 			labelled_progress_bar.show()
 			task_label.show()
 			info_label.show()
@@ -34,7 +34,7 @@ func _on_thread_update(type, data):
 			labelled_progress_bar.max_value = data.size
 			labelled_progress_bar.value = data.idx
 			
-			info_label.text = "Exporting \"%s\"..." % data.project
+			info_label.text = "Importing \"%s\"..." % data.project
 			task_label.text = data.file
 		"finish":
 			labelled_progress_bar.hide()

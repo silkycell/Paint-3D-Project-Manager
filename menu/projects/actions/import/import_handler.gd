@@ -1,43 +1,22 @@
-extends Control
+extends ActionHandler
 class_name ImportHandler
 
 const REPLACETEXT:String = "A project with the folder \"%s\" already exists."
-const POPUP_BOX = preload("res://menu/popup_box.tscn")
 
 @onready var import_dialog := $ImportDialog
 @onready var replace_project_popup = $ReplaceProjectPopup
 
-var import_thread:Thread
-
-signal import_thread_update
-signal finished_importing
-
 func _ready():
-	import_dialog.canceled.connect(exit_import)
-	hide()
+	import_dialog.canceled.connect(exit_action)
+	super()
 
-func begin_import():
-	visible = true
+func begin_action(_project:Project = null):
+	super(null)
 	import_dialog.visible = true
 
-func exit_import():
+func exit_action():
+	super()
 	import_dialog.visible = false
-	visible = false
-
-func display_error(title:String, content:String):
-	var error_box = POPUP_BOX.instantiate()
-	error_box.title = title
-	error_box.text = content
-	
-	# ???????????????
-	error_box.button_options.clear()
-	error_box.button_options.append("Ok")
-	
-	add_child(error_box)
-	
-	await error_box.choice_selected
-	
-	exit_import()
 
 func _on_import_dialog_file_selected(path:String):
 	var reader := ZIPReader.new()
@@ -50,6 +29,10 @@ func _on_import_dialog_file_selected(path:String):
 	var data_json
 	
 	if !reader.file_exists("data.json"): # old format check
+		if !reader.file_exists("exportProjects.json"):
+			display_error("Read Error", "This is not a P3D or P3DPJ file!")
+			return
+		
 		# TODO: add support for multi project P3Ds
 		var export_projects = JSON.parse_string(reader.read_file("exportProjects.json").get_string_from_ascii())
 		
@@ -83,7 +66,7 @@ func _on_import_dialog_file_selected(path:String):
 		
 		match choice:
 			"cancel":
-				exit_import()
+				exit_action()
 				should_continue = false
 			"replace project":
 				ProjectsJsonAPI.projects.erase(ProjectsJsonAPI.get_project_from_folder(project_folder_name))
@@ -100,22 +83,22 @@ func _on_import_dialog_file_selected(path:String):
 				data_json["project_data"] = temp_obj.to_dict()
 	
 	if should_continue:
-		if import_thread != null: import_thread.wait_to_finish()
+		if action_thread != null: action_thread.wait_to_finish()
 		
-		import_thread = Thread.new()
-		import_thread.start(import_project.bind(ProjectsJsonAPI.PROJECTS_FOLDER_PATH, reader, data_json))
+		action_thread = Thread.new()
+		action_thread.start(import_project.bind(ProjectsJsonAPI.PROJECTS_FOLDER_PATH, reader, data_json))
 		
-		var project_object = await finished_importing
+		var project_object = await finished_action
 		
 		ProjectsJsonAPI.projects.append(project_object)
 		ProjectsJsonAPI.sort_projects()
 		ProjectsJsonAPI.save_json()
 		
 		get_node("%ProjectsListContainer").generate_buttons()
-		exit_import()
+		exit_action()
 
 func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictionary):
-	call_deferred("emit_signal", "import_thread_update", "start", {"project": data_json["project_data"]["Name"]})
+	call_deferred("emit_signal", "action_thread_update", "start", {"project": data_json["project_data"]["Name"]})
 	
 	var project_folder_name = data_json["project_data"]["Path"]
 	project_folder_name = project_folder_name.erase(project_folder_name.find("Projects\\"), "Projects\\".length())
@@ -123,7 +106,7 @@ func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictiona
 	var project_location = projects_folder.path_join(project_folder_name)
 	
 	if DirAccess.dir_exists_absolute(project_location):
-		call_deferred("emit_signal", "import_thread_update", "delete", {"project": data_json["project_data"]["Name"]})
+		call_deferred("emit_signal", "action_thread_update", "delete", {"project": data_json["project_data"]["Name"]})
 		DirAccess.remove_absolute(project_location)
 	
 	DirAccess.make_dir_recursive_absolute(project_location)
@@ -146,7 +129,7 @@ func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictiona
 		
 		var file_access = FileAccess.open(project_location.path_join(file_name), FileAccess.WRITE)
 		
-		call_deferred("emit_signal", "import_thread_update", "import", {
+		call_deferred("emit_signal", "action_thread_update", "import", {
 			"size": reader.get_files().size(),
 			"idx": idx,
 			"file": file_name,
@@ -158,10 +141,7 @@ func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictiona
 	
 	var project_object:Project = Project.new(data_json["project_data"])
 	
-	call_deferred("emit_signal", "import_thread_update", "finish", {})
-	call_deferred("emit_signal", "finished_importing", project_object)
+	call_deferred("emit_signal", "action_thread_update", "finish", {})
+	call_deferred("emit_signal", "finished_action", project_object)
 	
 	reader.close()
-
-func _exit_tree():
-	if import_thread != null: import_thread.wait_to_finish()
