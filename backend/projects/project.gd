@@ -33,13 +33,7 @@ var absolute_project_folder:String:
 		return ProjectsJsonAPI.PROJECTS_FOLDER_PATH.path_join(project_folder)
 
 var size_thread:Thread
-var size:float = -INF:
-	get:
-		if size == -INF && size_thread == null:
-			size_thread = Thread.new()
-			size_thread.start(_calculate_size.bind(absolute_project_folder), Thread.PRIORITY_LOW)
-		
-		return size
+var size:float = -INF
 
 var thumbnail_thread:Thread
 var thumbnail:Texture2D = null
@@ -56,9 +50,6 @@ func _init(project_data:Dictionary):
 	is_recovered = bool(project_data.get("IsRecovered"))
 	is_previously_saved = bool(project_data.get("IsPreviouslySaved"))
 	
-	thumbnail_thread = Thread.new()
-	thumbnail_thread.start(_load_thumbnail.bind(get_thumbnail_path()), Thread.PRIORITY_LOW)
-	
 	thumbnail_finished_loading.connect(func(thumbnail_texture):
 		thumbnail = thumbnail_texture
 	)
@@ -66,6 +57,26 @@ func _init(project_data:Dictionary):
 	size_finished_calculating.connect(func(calculated_size):
 		size = calculated_size
 	)
+
+func get_size():
+	if size == -INF:
+		if size_thread == null:
+			size_thread = Thread.new()
+			size_thread.start(_calculate_size.bind(absolute_project_folder), Thread.PRIORITY_LOW)
+			
+		await size_finished_calculating
+		
+	return size
+
+func get_thumbnail():
+	if thumbnail == null:
+		if thumbnail_thread == null:
+			thumbnail_thread = Thread.new()
+			thumbnail_thread.start(_load_thumbnail.bind(get_thumbnail_path()), Thread.PRIORITY_LOW)
+		
+		await thumbnail_finished_loading
+		
+	return thumbnail
 
 signal thumbnail_finished_loading
 func _load_thumbnail(thumbnail_path):

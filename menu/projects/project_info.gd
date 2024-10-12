@@ -21,20 +21,19 @@ func select_project(project:Project):
 	
 	project_name.text = selected_project.name
 	project_path.text = PROJECT_PATH_TEMPLATE % selected_project.project_folder
-	project_data.text = get_size_string(selected_project)
+	project_data.text = get_time_string(selected_project)
+	project_size.text = PROJECT_SIZE_TEMPLATE % "Loading..."
 	
 	recovered_icon.visible = selected_project.is_recovered
 	unsaved_icon.visible = !selected_project.is_previously_saved
 	
-	if selected_project.size == -INF:
-		project_size.text = PROJECT_SIZE_TEMPLATE % "Loading..."
-		await project.size_finished_calculating
+	var proj_size = await selected_project.get_size()
 	
 	# JIC calculation completes after we switched projects
 	if project == selected_project:
-		project_size.text = PROJECT_SIZE_TEMPLATE % String.humanize_size(selected_project.size)
+		project_size.text = PROJECT_SIZE_TEMPLATE % String.humanize_size(proj_size)
 
-func get_size_string(project:Project):
+func get_time_string(project:Project):
 	var timezone = Time.get_time_zone_from_system()
 	var bias_in_sec = timezone.bias * 60
 	

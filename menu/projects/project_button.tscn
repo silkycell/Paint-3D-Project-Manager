@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bxa3o7i04bb57" path="res://menu/projects/assets/recovered_icon.tscn" id="4_ku1sf"]
 [ext_resource type="PackedScene" uid="uid://q4f3esthditc" path="res://menu/projects/assets/unsaved_icon.tscn" id="5_64b0d"]
 
-[node name="ProjectButton" type="Button" node_paths=PackedStringArray("label", "thumbnail", "recovered_icon", "unsaved_icon")]
+[node name="ProjectButton" type="Button" node_paths=PackedStringArray("label", "thumbnail", "recovered_icon", "unsaved_icon", "visible_on_screen_notifier")]
 custom_minimum_size = Vector2(275, 56)
 anchors_preset = -1
 anchor_right = 0.239
@@ -22,6 +22,7 @@ label = NodePath("Label")
 thumbnail = NodePath("Thumbnail")
 recovered_icon = NodePath("IconBox/RecoveredIcon")
 unsaved_icon = NodePath("IconBox/UnsavedIcon")
+visible_on_screen_notifier = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -75,5 +76,9 @@ layout_mode = 2
 
 [node name="UnsavedIcon" parent="IconBox" instance=ExtResource("5_64b0d")]
 layout_mode = 2
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(137.5, 28)
+scale = Vector2(13.75, 2.8)
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
