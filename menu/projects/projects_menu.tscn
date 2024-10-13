@@ -397,7 +397,6 @@ grow_vertical = 2
 script = ExtResource("8_gtaak")
 
 [node name="BG" type="ColorRect" parent="ImportHandler"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -432,6 +431,7 @@ parent_action = NodePath("..")
 
 [node name="DeleteHandler" type="Control" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -441,7 +441,6 @@ grow_vertical = 2
 script = ExtResource("21_6r0s8")
 
 [node name="BG" type="ColorRect" parent="DeleteHandler"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
