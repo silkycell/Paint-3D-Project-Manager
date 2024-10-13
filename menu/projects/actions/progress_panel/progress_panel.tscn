@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cyxb6jh7o5skw"]
+[gd_scene load_steps=15 format=3 uid="uid://cyxb6jh7o5skw"]
 
 [ext_resource type="Script" path="res://menu/projects/actions/progress_panel/progress_panel.gd" id="1_tg8ej"]
 [ext_resource type="PackedScene" uid="uid://n3lfb6rm53uc" path="res://menu/projects/actions/progress_panel/labelled_progress_bar.tscn" id="2_ttfj7"]
 [ext_resource type="Texture2D" uid="uid://lvahg3gwen1x" path="res://menu/projects/actions/animation/walk.png" id="2_txkbk"]
 [ext_resource type="Texture2D" uid="uid://d0q61ycpt3chw" path="res://menu/projects/actions/animation/index.png" id="2_utgpn"]
-[ext_resource type="Texture2D" uid="uid://c35npa00btbyn" path="res://menu/projects/actions/animation/roller.png" id="4_hm1b3"]
+[ext_resource type="Texture2D" uid="uid://b5yay8fq0bxs7" path="res://menu/projects/actions/animation/roller_bottom.png" id="5_2gvrb"]
+[ext_resource type="Texture2D" uid="uid://b4aorwpd4utvt" path="res://menu/projects/actions/animation/roller_top.png" id="6_xsr7q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu2ph"]
 bg_color = Color(0.255659, 0.255659, 0.255659, 1)
@@ -14,60 +15,6 @@ font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_rfh4t"]
 font_size = 10
-
-[sub_resource type="Animation" id="Animation_vjh4j"]
-resource_name = "index"
-length = 2.5
-loop_mode = 1
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_utgpn")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.33333, 1.41667, 1.5, 1.58333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:vframes")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
 
 [sub_resource type="Animation" id="Animation_q6778"]
 resource_name = "walk"
@@ -123,50 +70,64 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_5fbws"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_vjh4j"]
+resource_name = "index"
+length = 2.5
+loop_mode = 1
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_txkbk")]
+"values": [ExtResource("2_utgpn")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.33333, 1.41667, 1.5, 1.58333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [5]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/path = NodePath("Sprite2D:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mpo5u"]
 _data = {
 &"walk": SubResource("Animation_q6778"),
-&"index": SubResource("Animation_vjh4j"),
-&"RESET": SubResource("Animation_5fbws")
+&"index": SubResource("Animation_vjh4j")
 }
 
 [sub_resource type="Animation" id="Animation_1hdb2"]
@@ -177,7 +138,7 @@ step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Bottom:frame")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -187,25 +148,9 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_rbx7m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mko62"]
 _data = {
-&"roll": SubResource("Animation_1hdb2"),
-&"RESET": SubResource("Animation_rbx7m")
+&"roll": SubResource("Animation_1hdb2")
 }
 
 [node name="ProgressPanel" type="Panel"]
@@ -297,7 +242,7 @@ grow_vertical = 2
 [node name="Sprite2D" type="Sprite2D" parent="AnimationContainer/Petri"]
 scale = Vector2(0.365942, 0.365942)
 texture = ExtResource("2_txkbk")
-hframes = 5
+hframes = 4
 vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationContainer/Petri"]
@@ -307,20 +252,24 @@ libraries = {
 
 [node name="Roller" type="Control" parent="AnimationContainer"]
 anchors_preset = 0
-offset_left = 107.0
-offset_top = -34.0
-offset_right = 107.0
-offset_bottom = -34.0
+offset_left = 121.0
+offset_top = -13.0
+offset_right = 121.0
+offset_bottom = -13.0
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimationContainer/Roller"]
+[node name="Bottom" type="Sprite2D" parent="AnimationContainer/Roller"]
 scale = Vector2(0.366, 0.366)
-texture = ExtResource("4_hm1b3")
+texture = ExtResource("5_2gvrb")
 hframes = 3
 vframes = 3
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationContainer/Roller"]
 libraries = {
 &"": SubResource("AnimationLibrary_mko62")
 }
 autoplay = "roll"
+
+[node name="Top" type="Sprite2D" parent="AnimationContainer/Roller"]
+position = Vector2(-14, -31)
+scale = Vector2(0.366, 0.366)
+texture = ExtResource("6_xsr7q")

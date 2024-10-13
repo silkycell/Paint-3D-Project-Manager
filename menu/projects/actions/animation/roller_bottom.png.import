@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c35npa00btbyn"
-path="res://.godot/imported/roller.png-d1ca311b1f0f63db68b307f657f6a3fc.ctex"
+uid="uid://b5yay8fq0bxs7"
+path="res://.godot/imported/roller_bottom.png-79849cf079819a4efb8145ceaffd23bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://menu/projects/actions/animation/roller.png"
-dest_files=["res://.godot/imported/roller.png-d1ca311b1f0f63db68b307f657f6a3fc.ctex"]
+source_file="res://menu/projects/actions/animation/roller_bottom.png"
+dest_files=["res://.godot/imported/roller_bottom.png-79849cf079819a4efb8145ceaffd23bf.ctex"]
 
 [params]
 
