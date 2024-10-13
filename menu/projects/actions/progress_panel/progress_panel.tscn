@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyxb6jh7o5skw"]
+[gd_scene load_steps=19 format=3 uid="uid://cyxb6jh7o5skw"]
 
 [ext_resource type="Script" path="res://menu/projects/actions/progress_panel/progress_panel.gd" id="1_tg8ej"]
+[ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_xawbv"]
 [ext_resource type="PackedScene" uid="uid://n3lfb6rm53uc" path="res://menu/projects/actions/progress_panel/labelled_progress_bar.tscn" id="2_ttfj7"]
 [ext_resource type="Texture2D" uid="uid://lvahg3gwen1x" path="res://menu/projects/actions/animation/walk.png" id="2_txkbk"]
 [ext_resource type="Texture2D" uid="uid://d0q61ycpt3chw" path="res://menu/projects/actions/animation/index.png" id="2_utgpn"]
@@ -8,14 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://2bsjpj6u0vtf" path="res://menu/projects/actions/animation/auggy.png" id="5_tokjm"]
 [ext_resource type="Texture2D" uid="uid://b4aorwpd4utvt" path="res://menu/projects/actions/animation/roller_top.png" id="6_xsr7q"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qu2ph"]
-bg_color = Color(0.255659, 0.255659, 0.255659, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_rn4k5"]
-font_size = 18
-
-[sub_resource type="LabelSettings" id="LabelSettings_rfh4t"]
-font_size = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhera"]
+bg_color = Color(0.941176, 0.94902, 0.952941, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.392157, 0.713726, 1)
 
 [sub_resource type="Animation" id="Animation_q6778"]
 resource_name = "walk"
@@ -207,33 +207,37 @@ _data = {
 }
 
 [node name="ProgressPanel" type="Panel"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 133.0
-offset_top = 49.0
-offset_right = -133.0
-offset_bottom = -69.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -375.0
+offset_top = -140.0
+offset_right = 375.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qu2ph")
+theme = ExtResource("1_xawbv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qhera")
 script = ExtResource("1_tg8ej")
 
 [node name="InfoLabel" type="Label" parent="."]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.357
-anchor_right = 1.0
-anchor_bottom = 0.496
-offset_left = 16.0
-offset_top = -0.210007
-offset_right = -13.0
-offset_bottom = 0.119995
+anchor_left = 0.502
+anchor_top = 0.5
+anchor_right = 0.502
+anchor_bottom = 0.5
+offset_left = -428.772
+offset_top = -7.00002
+offset_right = 428.228
+offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"HeaderMedium"
 text = "Doing task..."
-label_settings = SubResource("LabelSettings_rn4k5")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -243,17 +247,17 @@ text_overrun_behavior = 3
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 1
 anchors_preset = -1
+anchor_left = 0.499
 anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.596
-offset_left = 8.0
-offset_top = 27.0
-offset_right = -10.0
-offset_bottom = 0.119995
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.114
+offset_top = 83.0
+offset_right = 433.0
+offset_bottom = 107.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Nodes_18446744069414587421_SurfaceAlignmentProvider.bin"
-label_settings = SubResource("LabelSettings_rfh4t")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -261,22 +265,29 @@ text_overrun_behavior = 3
 
 [node name="LabelledProgressBar" parent="." instance=ExtResource("2_ttfj7")]
 layout_mode = 1
-anchor_bottom = 0.525
-offset_left = 98.0
-offset_top = 0.249969
-offset_right = -98.0
-offset_bottom = -0.250031
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -345.0
+offset_top = 50.0
+offset_right = 345.0
+offset_bottom = 76.0
 
 [node name="AnimationContainer" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.497
-anchor_top = 0.408
-anchor_right = 0.497
-anchor_bottom = 0.408
-offset_left = -0.34201
-offset_top = -0.240005
-offset_right = -0.34201
-offset_bottom = -0.240005
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = 14.0
+offset_right = -3.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Petri" type="Control" parent="AnimationContainer"]
 layout_mode = 1

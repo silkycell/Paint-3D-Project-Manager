@@ -330,6 +330,15 @@ grow_vertical = 2
 theme = ExtResource("1_ti7wl")
 script = ExtResource("5_qthqx")
 
+[node name="BG" type="ColorRect" parent="ExportHandler"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.572549)
+
 [node name="ExportDialog" type="FileDialog" parent="ExportHandler"]
 title = "Select the project export location"
 initial_position = 1
@@ -347,8 +356,6 @@ button_options = Array[String](["Yes", "Cancel"])
 [node name="ExportProgressPanel" parent="ExportHandler" node_paths=PackedStringArray("parent_action") instance=ExtResource("12_cl2e7")]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-offset_bottom = -49.0
 script = ExtResource("6_5afnv")
 parent_action = NodePath("..")
 
@@ -362,6 +369,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_gtaak")
+
+[node name="BG" type="ColorRect" parent="ImportHandler"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.572549)
 
 [node name="ImportDialog" type="FileDialog" parent="ImportHandler"]
 title = "Open a File"
@@ -384,8 +400,6 @@ button_options = Array[String](["Replace Project", "Create New Folder", "Cancel"
 [node name="ImportProgressPanel" parent="ImportHandler" node_paths=PackedStringArray("parent_action") instance=ExtResource("12_cl2e7")]
 visible = false
 layout_mode = 1
-anchors_preset = -1
-offset_bottom = -49.0
 script = ExtResource("10_1db86")
 parent_action = NodePath("..")
 

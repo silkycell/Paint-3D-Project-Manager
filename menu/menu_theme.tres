@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://eno3kw6ga4uf"]
+[gd_resource type="Theme" load_steps=22 format=3 uid="uid://eno3kw6ga4uf"]
 
 [sub_resource type="SystemFont" id="SystemFont_fvwaa"]
 font_names = PackedStringArray("Segoe UI", "Sans-Serif")
@@ -50,6 +50,21 @@ border_color = Color(0.831373, 0.85098, 0.886275, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ku7b"]
 bg_color = Color(0.941176, 0.94902, 0.952941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t2f6w"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.831373, 0.85098, 0.886275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50760"]
+bg_color = Color(0.657383, 0.699145, 0.7253, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.502658, 0.52121, 0.603977, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2skk"]
 bg_color = Color(0.913725, 0.92549, 0.929412, 1)
@@ -123,6 +138,9 @@ LineEdit/fonts/font = SubResource("SystemFont_jvjep")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_1s66k")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_fdbj6")
 Panel/styles/panel = SubResource("StyleBoxFlat_7ku7b")
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_t2f6w")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_50760")
 ScrollContainer/styles/panel = SubResource("StyleBoxFlat_k2skk")
 TabContainer/colors/font_selected_color = Color(0.133333, 0.133333, 0.333333, 1)
 TabContainer/colors/font_unselected_color = Color(0.133333, 0.133333, 0.333333, 1)

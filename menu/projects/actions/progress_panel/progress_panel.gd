@@ -37,6 +37,8 @@ var petri_state:String = "HIDDEN":
 func _ready():
 	if parent_action != null:
 		parent_action.action_thread_update.connect(_on_thread_update)
+	else:
+		push_warning("No parent action assigned!")
 	
 	hide()
 
