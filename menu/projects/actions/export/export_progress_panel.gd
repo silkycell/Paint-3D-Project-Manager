@@ -1,43 +1,25 @@
-extends Panel
-
-@onready var info_label = $InfoLabel
-@onready var task_label = $TaskLabel
-@onready var labelled_progress_bar = $LabelledProgressBar
-
-func _ready():
-	get_node("%ExportHandler").action_thread_update.connect(_on_thread_update)
-	hide()
+extends ProgressPanel
 
 func _on_thread_update(type, data):
+	super(type, data)
+	
 	match type:
 		"start":
-			labelled_progress_bar.hide()
-			task_label.hide()
-			info_label.show()
-			show()
-			
 			info_label.text = "Exporting \"%s\"..." % data.project
+		
 		"index":
-			labelled_progress_bar.hide()
-			task_label.show()
-			info_label.show()
-			show()
+			_set_visibilities(false, true, true, true)
 			
+			petri_state = "INDEX"
 			info_label.text = "Exporting \"%s\"..." % data.project
 			task_label.text = "Indexing Files... (" + str(data.count) + ")"
+		
 		"write":
-			labelled_progress_bar.show()
-			task_label.show()
-			info_label.show()
-			show()
+			_set_visibilities(true, true, true, true)
 			
 			labelled_progress_bar.max_value = data.size
 			labelled_progress_bar.value = data.idx
 			
+			petri_state = "TRANSFER"
 			info_label.text = "Exporting \"%s\"..." % data.project
 			task_label.text = data.file
-		"finish":
-			labelled_progress_bar.hide()
-			task_label.hide()
-			info_label.hide()
-			hide()

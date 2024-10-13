@@ -344,12 +344,13 @@ title = "The file \"%s\" already exists."
 text = "Do you want to replace it?"
 button_options = Array[String](["Yes", "Cancel"])
 
-[node name="ExportProgressPanel" parent="ExportHandler" instance=ExtResource("12_cl2e7")]
+[node name="ExportProgressPanel" parent="ExportHandler" node_paths=PackedStringArray("parent_action") instance=ExtResource("12_cl2e7")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_bottom = -49.0
 script = ExtResource("6_5afnv")
+parent_action = NodePath("..")
 
 [node name="ImportHandler" type="Control" parent="."]
 unique_name_in_owner = true
@@ -380,12 +381,13 @@ title = "Folder Already Exists"
 text = "A project with the folder \"WorkingFolder (999)\" already exists."
 button_options = Array[String](["Replace Project", "Create New Folder", "Cancel"])
 
-[node name="ImportProgressPanel" parent="ImportHandler" instance=ExtResource("12_cl2e7")]
+[node name="ImportProgressPanel" parent="ImportHandler" node_paths=PackedStringArray("parent_action") instance=ExtResource("12_cl2e7")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
 offset_bottom = -49.0
 script = ExtResource("10_1db86")
+parent_action = NodePath("..")
 
 [connection signal="text_changed" from="MainMenu/ProjectsList/SearchBar" to="MainMenu/ProjectsList/SearchBar" method="_on_text_changed"]
 [connection signal="pressed" from="MainMenu/ProjectPanel/Buttons/ImportButton" to="MainMenu/ProjectPanel/Buttons/ImportButton" method="_on_pressed"]
