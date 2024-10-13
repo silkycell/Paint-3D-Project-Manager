@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=24 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -15,10 +15,13 @@
 [ext_resource type="Script" path="res://menu/projects/actions/import/import_handler.gd" id="8_gtaak"]
 [ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/projects/assets/thumbnail_loading.tres" id="9_rfehh"]
 [ext_resource type="Script" path="res://menu/projects/actions/import/import_progress_panel.gd" id="10_1db86"]
+[ext_resource type="Texture2D" uid="uid://5gq1w2xyqqsw" path="res://menu/projects/assets/delete_icon.svg" id="11_vawka"]
 [ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/projects/actions/progress_panel/progress_panel.tscn" id="12_cl2e7"]
 [ext_resource type="Script" path="res://menu/projects/settings_button.gd" id="13_v52yi"]
 [ext_resource type="PackedScene" uid="uid://cmijcfdt5mip" path="res://menu/popup_box.tscn" id="17_j3wdq"]
 [ext_resource type="Texture2D" uid="uid://dychp88l7omd3" path="res://menu/projects/assets/settings_icon.svg" id="19_yudf6"]
+[ext_resource type="Script" path="res://menu/projects/actions/delete/delete_handler.gd" id="21_6r0s8"]
+[ext_resource type="Script" path="res://menu/projects/actions/delete/delete_progress_panel.gd" id="22_kgcvs"]
 
 [sub_resource type="GDScript" id="GDScript_u7u8r"]
 resource_name = "VersionNumberSetter"
@@ -143,7 +146,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 38.0
 offset_top = -143.0
-offset_right = 424.32
+offset_right = 455.0
 offset_bottom = -64.0
 
 [node name="ImportButton" type="Button" parent="MainMenu/ProjectPanel/Buttons" node_paths=PackedStringArray("target_action")]
@@ -214,6 +217,29 @@ text = "Export
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DeleteButton" type="Button" parent="MainMenu/ProjectPanel/Buttons" node_paths=PackedStringArray("target_action")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+tooltip_text = "Delete the selected project"
+script = ExtResource("3_hxtem")
+target_action = NodePath("../../../../DeleteHandler")
+
+[node name="Icon" type="TextureRect" parent="MainMenu/ProjectPanel/Buttons/DeleteButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 18.0
+offset_right = -23.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture = ExtResource("11_vawka")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Thumbnail" type="TextureRect" parent="MainMenu/ProjectPanel"]
 layout_mode = 1
@@ -303,7 +329,7 @@ toggle_mode = true
 script = ExtResource("13_v52yi")
 settings_menu = NodePath("../SettingsMenuContainer")
 
-[node name="TextureRect" type="TextureRect" parent="SettingsContainer/SettingsButton"]
+[node name="Icon" type="TextureRect" parent="SettingsContainer/SettingsButton"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -371,6 +397,7 @@ grow_vertical = 2
 script = ExtResource("8_gtaak")
 
 [node name="BG" type="ColorRect" parent="ImportHandler"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -403,9 +430,42 @@ layout_mode = 1
 script = ExtResource("10_1db86")
 parent_action = NodePath("..")
 
+[node name="DeleteHandler" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("21_6r0s8")
+
+[node name="BG" type="ColorRect" parent="DeleteHandler"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.572549)
+
+[node name="DeleteWarningPopup" parent="DeleteHandler" instance=ExtResource("17_j3wdq")]
+visible = false
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
+title = "Delete %s?"
+text = "Are you sure you want to delete this project? This action is irreversible."
+button_options = Array[String](["Delete", "Cancel"])
+
+[node name="DeleteProgressPanel" parent="DeleteHandler" node_paths=PackedStringArray("parent_action") instance=ExtResource("12_cl2e7")]
+visible = false
+layout_mode = 1
+script = ExtResource("22_kgcvs")
+parent_action = NodePath("..")
+
 [connection signal="text_changed" from="MainMenu/ProjectsList/SearchBar" to="MainMenu/ProjectsList/SearchBar" method="_on_text_changed"]
-[connection signal="pressed" from="MainMenu/ProjectPanel/Buttons/ImportButton" to="MainMenu/ProjectPanel/Buttons/ImportButton" method="_on_pressed"]
-[connection signal="pressed" from="MainMenu/ProjectPanel/Buttons/ExportButton" to="MainMenu/ProjectPanel/Buttons/ExportButton" method="_on_pressed"]
 [connection signal="toggled" from="SettingsContainer/SettingsButton" to="SettingsContainer/SettingsButton" method="_on_toggled"]
 [connection signal="file_selected" from="ExportHandler/ExportDialog" to="ExportHandler" method="_on_export_dialog_file_selected"]
 [connection signal="file_selected" from="ImportHandler/ImportDialog" to="ImportHandler" method="_on_import_dialog_file_selected"]

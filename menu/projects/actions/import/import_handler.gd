@@ -106,8 +106,7 @@ func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictiona
 	var project_location = projects_folder.path_join(project_folder_name)
 	
 	if DirAccess.dir_exists_absolute(project_location):
-		call_deferred("emit_signal", "action_thread_update", "delete", {"project": data_json["project_data"]["Name"]})
-		DirAccess.remove_absolute(project_location)
+		_delete_project(data_json["project_data"]["Name"], project_location)
 	
 	DirAccess.make_dir_recursive_absolute(project_location)
 	
@@ -145,3 +144,26 @@ func import_project(projects_folder:String, reader:ZIPReader, data_json:Dictiona
 	call_deferred("emit_signal", "finished_action", project_object)
 	
 	reader.close()
+
+func _delete_project(project_name:String, folder_path:String):
+	var dir = DirAccess.open(folder_path)
+	
+	if dir == null:
+		display_error_deferred("Error Code " + str(DirAccess.get_open_error()), "Error accessing " + folder_path)
+		return DirAccess.get_open_error()
+	
+	var files = dir.get_files()
+	for i in range(files.size()):
+		call_deferred("emit_signal", "action_thread_update", "delete", {
+			"size": files.size(),
+			"idx": i,
+			"file": files[i],
+			"project": project_name
+		})
+		
+		var error = dir.remove(files[i])
+		if error != 0:
+			display_error_deferred("Error Code " + str(error), "Error while deleting " + files[i] + ".")
+			return
+	
+	DirAccess.remove_absolute(folder_path)

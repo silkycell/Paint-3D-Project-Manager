@@ -8,11 +8,14 @@ func _on_thread_update(type, data):
 			info_label.text = "Importing \"%s\"..." % data.project
 		
 		"delete":
-			_set_visibilities(false, true, true, true)
+			_set_visibilities(true, true, true, true)
+			
+			labelled_progress_bar.max_value = data.size
+			labelled_progress_bar.value = data.idx
 			
 			petri_state = "INDEX"
 			info_label.text = "Importing \"%s\"..." % data.project
-			info_label.text = "Deleting old files..."
+			task_label.text = "Deleting \"%s\"..." % data.file
 		
 		"import":
 			_set_visibilities(true, true, true, true)
