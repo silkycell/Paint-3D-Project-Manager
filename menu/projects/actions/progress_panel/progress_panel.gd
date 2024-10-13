@@ -19,11 +19,13 @@ var petri_state:String = "HIDDEN":
 				"HIDDEN":
 					petri.visible = false
 					roller.visible = false
+					
 				"INDEX":
 					petri.visible = true
 					roller.visible = false
 					
 					petri_animation_player.play("index")
+					
 				"TRANSFER":
 					petri.visible = true
 					roller.visible = true
