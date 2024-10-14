@@ -58,7 +58,7 @@ func _on_import_dialog_file_selected(path:String):
 	
 	# this code is stupid, if theres a way to un-stupid it please let me know
 	var should_continue = true
-	if ProjectsJsonAPI.check_proj_folder_exists(project_folder_name) != null:
+	if ProjectsJsonAPI.check_proj_folder_exists(project_folder_name) == true:
 		replace_project_popup.text = REPLACETEXT % project_folder_name
 		replace_project_popup.visible = true
 		
