@@ -1,7 +1,5 @@
 extends VBoxContainer
 
-const USE_12_HOUR = true
-
 const PROJECT_PATH_TEMPLATE = "Project Path: %s"
 const PROJECT_TIME_TEMPLATE = "Last Modified: %s %s"
 const PROJECT_SIZE_TEMPLATE = "Size: %s"
@@ -41,7 +39,7 @@ func get_time_string(project:Project):
 	var day = str(date_dict.day).lpad(2, "0")
 	
 	var period = ""
-	if USE_12_HOUR:
+	if !SettingsGlobal.use_24_hour:
 		period = "AM"
 		
 		if time_dict.hour >= 12:

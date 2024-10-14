@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=28 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://5gq1w2xyqqsw" path="res://menu/projects/assets/delete_icon.svg" id="11_vawka"]
 [ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/projects/actions/progress_panel/progress_panel.tscn" id="12_cl2e7"]
 [ext_resource type="Script" path="res://menu/url_rich_text_label.gd" id="13_304vj"]
+[ext_resource type="Script" path="res://menu/projects/settings/visual_options.gd" id="13_kehru"]
 [ext_resource type="Script" path="res://menu/projects/settings_button.gd" id="13_v52yi"]
 [ext_resource type="Texture2D" uid="uid://bog3yhscprt7o" path="res://menu/projects/assets/github_icon.svg" id="14_547in"]
 [ext_resource type="Texture2D" uid="uid://dmag2tpwhnvqf" path="res://menu/projects/assets/petri_credits.png" id="14_r7gxu"]
@@ -315,6 +316,7 @@ current_tab = 0
 
 [node name="Visual" type="Control" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu"]
 layout_mode = 2
+script = ExtResource("13_kehru")
 metadata/_tab_index = 0
 
 [node name="GridContainer" type="GridContainer" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Visual"]
@@ -329,7 +331,7 @@ offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CheckButton" type="CheckButton" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Visual/GridContainer"]
+[node name="24HourTime" type="CheckButton" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Visual/GridContainer"]
 layout_mode = 2
 size_flags_stretch_ratio = 7.2
 text = "24 Hour Format"

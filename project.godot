@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 ProjectsJsonAPI="*res://backend/projects/projects_json_api.gd"
 GlobalSignalHandler="*res://backend/global_signal_handler.gd"
+SettingsGlobal="*res://backend/settings_global.gd"
 
 [debug]
 
