@@ -1,7 +1,7 @@
 extends Object
 class_name Project
 
-const THUMBNAIL_MISSING = preload("res://menu/projects/assets/thumbnail_missing.png")
+const THUMBNAIL_MISSING = preload("res://menu/assets/thumbnail_missing.png")
 
 var ID:String = ""
 var source_ID:String = ""

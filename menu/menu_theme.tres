@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=33 format=3 uid="uid://eno3kw6ga4uf"]
 
-[ext_resource type="Texture2D" uid="uid://bk6i2y0neorcx" path="res://menu/projects/assets/check_on.png" id="1_mykoj"]
-[ext_resource type="Texture2D" uid="uid://w0k68bqo6u0a" path="res://menu/projects/assets/check_off.png" id="2_0gdr5"]
+[ext_resource type="Texture2D" uid="uid://bk6i2y0neorcx" path="res://menu/assets/icons/check_on.png" id="1_mykoj"]
+[ext_resource type="Texture2D" uid="uid://w0k68bqo6u0a" path="res://menu/assets/icons/check_off.png" id="2_0gdr5"]
 
 [sub_resource type="SystemFont" id="SystemFont_fvwaa"]
 font_names = PackedStringArray("Segoe UI", "Sans-Serif")

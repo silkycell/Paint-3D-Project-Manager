@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://q4f3esthditc"]
+
+[ext_resource type="Texture2D" uid="uid://cwg218gfds8ys" path="res://menu/assets/icons/unsaved_icon.svg" id="1_1u2fq"]
+
+[node name="UnsavedIcon" type="TextureRect"]
+tooltip_text = "Not Previously Saved"
+mouse_default_cursor_shape = 16
+texture = ExtResource("1_1u2fq")
+expand_mode = 2
+stretch_mode = 5

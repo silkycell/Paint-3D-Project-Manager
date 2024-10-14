@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://n3lfb6rm53uc"]
+
+[ext_resource type="Script" path="res://menu/actions/progress_panel/labelled_progress_bar.gd" id="1_cyq28"]
+[ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_tuwkv"]
+
+[node name="LabelledProgressBar" type="ProgressBar"]
+anchors_preset = -1
+anchor_left = 0.147
+anchor_top = 0.522
+anchor_right = 0.853
+anchor_bottom = 0.603
+offset_left = -0.343994
+offset_top = -0.256012
+offset_right = 0.343933
+offset_bottom = 0.255981
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tuwkv")
+value = 50.0
+show_percentage = false
+script = ExtResource("1_cyq28")
+
+[node name="ProgressLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0 / 0"
+horizontal_alignment = 1
+vertical_alignment = 1
