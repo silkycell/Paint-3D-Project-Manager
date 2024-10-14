@@ -1,4 +1,7 @@
-[gd_resource type="Theme" load_steps=22 format=3 uid="uid://eno3kw6ga4uf"]
+[gd_resource type="Theme" load_steps=33 format=3 uid="uid://eno3kw6ga4uf"]
+
+[ext_resource type="Texture2D" uid="uid://bk6i2y0neorcx" path="res://menu/projects/assets/check_on.png" id="1_mykoj"]
+[ext_resource type="Texture2D" uid="uid://w0k68bqo6u0a" path="res://menu/projects/assets/check_off.png" id="2_0gdr5"]
 
 [sub_resource type="SystemFont" id="SystemFont_fvwaa"]
 font_names = PackedStringArray("Segoe UI", "Sans-Serif")
@@ -20,6 +23,16 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.340911, 0.415927, 0.473635, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mtei5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p30p5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y1xnr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ssyq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0elvm"]
 
 [sub_resource type="SystemFont" id="SystemFont_jvjep"]
 font_names = PackedStringArray("Segoe UI", "Sans-Serif")
@@ -66,8 +79,18 @@ border_width_top = 1
 border_width_bottom = 1
 border_color = Color(0.502658, 0.52121, 0.603977, 1)
 
+[sub_resource type="SystemFont" id="SystemFont_yehh7"]
+font_names = PackedStringArray("Segoe UI", "Sans-Serif")
+hinting = 2
+subpixel_positioning = 0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2skk"]
 bg_color = Color(0.913725, 0.92549, 0.929412, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_6g00o"]
+font_names = PackedStringArray("Segoe UI", "Sans-Serif")
+hinting = 2
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycyi4"]
 bg_color = Color(0.941176, 0.94902, 0.952941, 1)
@@ -77,11 +100,26 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.501406, 0.501407, 0.501406, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_djus0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edjuf"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.888324, 0.902476, 0.906279, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wai7d"]
-bg_color = Color(0.941176, 0.94902, 0.952941, 1)
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.913725, 0.92549, 0.929412, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcb82"]
-bg_color = Color(0.834596, 0.856611, 0.863938, 1)
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.854926, 0.873106, 0.877992, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55opf"]
 content_margin_left = 6.0
@@ -122,6 +160,21 @@ Button/styles/focus = SubResource("StyleBoxEmpty_3wvy8")
 Button/styles/hover = SubResource("StyleBoxFlat_s30oo")
 Button/styles/normal = SubResource("StyleBoxFlat_5mbye")
 Button/styles/pressed = SubResource("StyleBoxFlat_xf5y8")
+CheckButton/colors/font_color = Color(0.133333, 0.133333, 0.333333, 1)
+CheckButton/colors/font_focus_color = Color(0.133333, 0.133333, 0.333333, 1)
+CheckButton/colors/font_hover_color = Color(0.133333, 0.133333, 0.333333, 1)
+CheckButton/colors/font_hover_pressed_color = Color(0.133333, 0.133333, 0.333333, 1)
+CheckButton/colors/font_pressed_color = Color(0.133333, 0.133333, 0.333333, 1)
+CheckButton/constants/check_v_offset = 3
+CheckButton/constants/icon_max_width = 0
+CheckButton/font_sizes/font_size = 26
+CheckButton/icons/checked = ExtResource("1_mykoj")
+CheckButton/icons/unchecked = ExtResource("2_0gdr5")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_mtei5")
+CheckButton/styles/hover = SubResource("StyleBoxEmpty_p30p5")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_y1xnr")
+CheckButton/styles/normal = SubResource("StyleBoxEmpty_0ssyq")
+CheckButton/styles/pressed = SubResource("StyleBoxEmpty_0elvm")
 Fonts/fonts/normal = SubResource("SystemFont_fvwaa")
 HeaderLarge/font_sizes/font_size = 40
 HeaderMedium/font_sizes/font_size = 20
@@ -141,11 +194,17 @@ Panel/styles/panel = SubResource("StyleBoxFlat_7ku7b")
 ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
 ProgressBar/styles/background = SubResource("StyleBoxFlat_t2f6w")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_50760")
+RichTextLabel/colors/default_color = Color(0.133333, 0.133333, 0.333333, 1)
+RichTextLabel/fonts/normal_font = SubResource("SystemFont_yehh7")
 ScrollContainer/styles/panel = SubResource("StyleBoxFlat_k2skk")
+TabContainer/colors/font_hovered_color = Color(0.133333, 0.133333, 0.333333, 1)
 TabContainer/colors/font_selected_color = Color(0.133333, 0.133333, 0.333333, 1)
-TabContainer/colors/font_unselected_color = Color(0.133333, 0.133333, 0.333333, 1)
-TabContainer/constants/side_margin = 4
+TabContainer/colors/font_unselected_color = Color(0.0814105, 0.0812921, 0.226808, 1)
+TabContainer/font_sizes/font_size = 20
+TabContainer/fonts/font = SubResource("SystemFont_6g00o")
 TabContainer/styles/panel = SubResource("StyleBoxFlat_ycyi4")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_djus0")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_edjuf")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_wai7d")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_vcb82")
 TooltipLabel/colors/font_color = Color(0, 0, 0, 1)

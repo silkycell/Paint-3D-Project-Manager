@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=27 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -17,7 +17,10 @@
 [ext_resource type="Script" path="res://menu/projects/actions/import/import_progress_panel.gd" id="10_1db86"]
 [ext_resource type="Texture2D" uid="uid://5gq1w2xyqqsw" path="res://menu/projects/assets/delete_icon.svg" id="11_vawka"]
 [ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/projects/actions/progress_panel/progress_panel.tscn" id="12_cl2e7"]
+[ext_resource type="Script" path="res://menu/url_rich_text_label.gd" id="13_304vj"]
 [ext_resource type="Script" path="res://menu/projects/settings_button.gd" id="13_v52yi"]
+[ext_resource type="Texture2D" uid="uid://bog3yhscprt7o" path="res://menu/projects/assets/github_icon.svg" id="14_547in"]
+[ext_resource type="Texture2D" uid="uid://dmag2tpwhnvqf" path="res://menu/projects/assets/petri_credits.png" id="14_r7gxu"]
 [ext_resource type="PackedScene" uid="uid://cmijcfdt5mip" path="res://menu/popup_box.tscn" id="17_j3wdq"]
 [ext_resource type="Texture2D" uid="uid://dychp88l7omd3" path="res://menu/projects/assets/settings_icon.svg" id="19_yudf6"]
 [ext_resource type="Script" path="res://menu/projects/actions/delete/delete_handler.gd" id="21_6r0s8"]
@@ -307,11 +310,151 @@ offset_right = 0.327942
 offset_bottom = -0.200012
 grow_horizontal = 2
 grow_vertical = 2
+tab_alignment = 1
 current_tab = 0
 
-[node name="thos is settings just trust me on this okay?" type="GridContainer" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu"]
+[node name="Visual" type="Control" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu"]
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="GridContainer" type="GridContainer" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Visual"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = -24.9999
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckButton" type="CheckButton" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Visual/GridContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 7.2
+text = "24 Hour Format"
+flat = true
+
+[node name="Info" type="Control" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu"]
+visible = false
+clip_contents = true
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="CreatedBy" type="RichTextLabel" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Info"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -109.0
+offset_top = 24.0
+offset_right = 111.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "Created by [url=https://silkycell.straw.page]sylvia (silkycell)[/url]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+script = ExtResource("13_304vj")
+
+[node name="HelpList" type="RichTextLabel" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Info"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -217.5
+offset_top = -51.0
+offset_right = 217.5
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/normal_font_size = 25
+bbcode_enabled = true
+text = "Additional UI help from [url=https://www.youtube.com/@squarevl]squareverylong[/url]
+Petri design & model by [url=https://lancey170.straw.page]Lancey170[/url]
+Additional prop design by [url=https://bisqueworld.straw.page/]MissBisque[/url]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+script = ExtResource("13_304vj")
+
+[node name="SpecialThanks" type="RichTextLabel" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Info"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = -59.0
+offset_right = 295.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/normal_font_size = 15
+bbcode_enabled = true
+text = "And last, but not least...
+A special thank you to all my amazing friends who helped test this program!"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+script = ExtResource("13_304vj")
+
+[node name="LinkButton" type="LinkButton" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Info"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -91.9999
+offset_top = -92.0
+offset_right = -4.99994
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+underline = 2
+uri = "https://github.com/silkycell/Paint-3D-Project-Manager"
+
+[node name="TextureRect" type="TextureRect" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Info/LinkButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Open Github page"
+mouse_default_cursor_shape = 2
+texture = ExtResource("14_547in")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Petri" type="TextureRect" parent="SettingsContainer/SettingsMenuContainer/SettingsMenu/Info"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -212.0
+offset_right = 548.0
+offset_bottom = 369.0
+grow_vertical = 0
+rotation = 0.120854
+scale = Vector2(0.414561, 0.414561)
+tooltip_text = "Slightly uncanny looking Petri"
+texture = ExtResource("14_r7gxu")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="SettingsButton" type="Button" parent="SettingsContainer" node_paths=PackedStringArray("settings_menu")]
 layout_mode = 1
