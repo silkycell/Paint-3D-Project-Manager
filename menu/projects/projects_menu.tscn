@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=29 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/actions/progress_panel/progress_panel.tscn" id="12_cl2e7"]
 [ext_resource type="Script" path="res://menu/url_rich_text_label.gd" id="13_304vj"]
 [ext_resource type="Script" path="res://menu/settings/visual_options.gd" id="13_kehru"]
+[ext_resource type="PackedScene" uid="uid://343h4rc4aq62" path="res://menu/update_popup.tscn" id="13_stju7"]
 [ext_resource type="Script" path="res://menu/projects/settings_button.gd" id="13_v52yi"]
 [ext_resource type="Texture2D" uid="uid://bog3yhscprt7o" path="res://menu/assets/icons/github_icon.svg" id="14_547in"]
 [ext_resource type="Texture2D" uid="uid://dmag2tpwhnvqf" path="res://menu/assets/petri_credits.png" id="14_r7gxu"]
@@ -278,6 +279,10 @@ grow_vertical = 0
 text = "v99.99.99"
 horizontal_alignment = 2
 script = SubResource("GDScript_u7u8r")
+
+[node name="UpdatePopup" parent="MainMenu/ProjectPanel" instance=ExtResource("13_stju7")]
+visible = false
+layout_mode = 1
 
 [node name="SettingsContainer" type="Control" parent="."]
 layout_mode = 1
