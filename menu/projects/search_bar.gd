@@ -13,4 +13,4 @@ func _on_text_changed(new_text):
 		if new_text.is_empty():
 			button.visible = true
 		else:
-			button.visible = button.project.name.contains(new_text.to_lower())
+			button.visible = button.project.name.containsn(new_text)
