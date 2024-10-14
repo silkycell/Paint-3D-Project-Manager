@@ -175,7 +175,6 @@ CheckButton/styles/hover = SubResource("StyleBoxEmpty_p30p5")
 CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_y1xnr")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_0ssyq")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_0elvm")
-Fonts/fonts/normal = SubResource("SystemFont_fvwaa")
 HeaderLarge/font_sizes/font_size = 40
 HeaderMedium/font_sizes/font_size = 20
 Label/colors/font_color = Color(0.133333, 0.133333, 0.333333, 1)
