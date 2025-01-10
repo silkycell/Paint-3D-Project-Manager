@@ -1,32 +1,32 @@
 [gd_scene load_steps=29 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
-[ext_resource type="Script" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
-[ext_resource type="Script" path="res://menu/projects/search_bar.gd" id="2_blyf4"]
-[ext_resource type="Script" path="res://menu/projects/project_panel.gd" id="2_qt3du"]
-[ext_resource type="Script" path="res://menu/actions/action_button.gd" id="3_hxtem"]
-[ext_resource type="Script" path="res://menu/projects/project_info.gd" id="5_5k1ix"]
+[ext_resource type="Script" uid="uid://di2dpm1ajnutw" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
+[ext_resource type="Script" uid="uid://bt8sgugf6p701" path="res://menu/projects/search_bar.gd" id="2_blyf4"]
+[ext_resource type="Script" uid="uid://n0vida4bys1n" path="res://menu/projects/project_panel.gd" id="2_qt3du"]
+[ext_resource type="Script" uid="uid://bpul5bovjg4ri" path="res://menu/actions/action_button.gd" id="3_hxtem"]
+[ext_resource type="Script" uid="uid://obdhyd2var37" path="res://menu/projects/project_info.gd" id="5_5k1ix"]
 [ext_resource type="Texture2D" uid="uid://dtwwh0dxlmuu5" path="res://menu/assets/icons/import_icon.svg" id="5_b8a6r"]
-[ext_resource type="Script" path="res://menu/actions/export/export_handler.gd" id="5_qthqx"]
-[ext_resource type="Script" path="res://menu/actions/export/export_progress_panel.gd" id="6_5afnv"]
+[ext_resource type="Script" uid="uid://ckqkimyjra5nu" path="res://menu/actions/export/export_handler.gd" id="5_qthqx"]
+[ext_resource type="Script" uid="uid://cdelornckmgyu" path="res://menu/actions/export/export_progress_panel.gd" id="6_5afnv"]
 [ext_resource type="PackedScene" uid="uid://bxa3o7i04bb57" path="res://menu/assets/icons/recovered_icon.tscn" id="6_vn5ml"]
 [ext_resource type="PackedScene" uid="uid://q4f3esthditc" path="res://menu/assets/icons/unsaved_icon.tscn" id="7_0prkq"]
 [ext_resource type="Texture2D" uid="uid://bphdjjy1s8vl5" path="res://menu/assets/icons/export_icon.svg" id="8_e514j"]
-[ext_resource type="Script" path="res://menu/actions/import/import_handler.gd" id="8_gtaak"]
+[ext_resource type="Script" uid="uid://djqmrfdjuoyk4" path="res://menu/actions/import/import_handler.gd" id="8_gtaak"]
 [ext_resource type="Texture2D" uid="uid://b4p7o2hqgvb13" path="res://menu/assets/thumbnail_loading.tres" id="9_rfehh"]
-[ext_resource type="Script" path="res://menu/actions/import/import_progress_panel.gd" id="10_1db86"]
+[ext_resource type="Script" uid="uid://0efi774f3pq3" path="res://menu/actions/import/import_progress_panel.gd" id="10_1db86"]
 [ext_resource type="Texture2D" uid="uid://5gq1w2xyqqsw" path="res://menu/assets/icons/delete_icon.svg" id="11_vawka"]
 [ext_resource type="PackedScene" uid="uid://cyxb6jh7o5skw" path="res://menu/actions/progress_panel/progress_panel.tscn" id="12_cl2e7"]
-[ext_resource type="Script" path="res://menu/url_rich_text_label.gd" id="13_304vj"]
-[ext_resource type="Script" path="res://menu/settings/visual_options.gd" id="13_kehru"]
+[ext_resource type="Script" uid="uid://bboxtubi4lpks" path="res://menu/url_rich_text_label.gd" id="13_304vj"]
+[ext_resource type="Script" uid="uid://d0ipbe3at0ni3" path="res://menu/settings/visual_options.gd" id="13_kehru"]
 [ext_resource type="PackedScene" uid="uid://343h4rc4aq62" path="res://menu/update_popup.tscn" id="13_stju7"]
-[ext_resource type="Script" path="res://menu/projects/settings_button.gd" id="13_v52yi"]
+[ext_resource type="Script" uid="uid://bgarv7nagsiex" path="res://menu/projects/settings_button.gd" id="13_v52yi"]
 [ext_resource type="Texture2D" uid="uid://bog3yhscprt7o" path="res://menu/assets/icons/github_icon.svg" id="14_547in"]
 [ext_resource type="Texture2D" uid="uid://dmag2tpwhnvqf" path="res://menu/assets/petri_credits.png" id="14_r7gxu"]
 [ext_resource type="PackedScene" uid="uid://cmijcfdt5mip" path="res://menu/popup_box.tscn" id="17_j3wdq"]
 [ext_resource type="Texture2D" uid="uid://dychp88l7omd3" path="res://menu/assets/icons/settings_icon.svg" id="19_yudf6"]
-[ext_resource type="Script" path="res://menu/actions/delete/delete_handler.gd" id="21_6r0s8"]
-[ext_resource type="Script" path="res://menu/actions/delete/delete_progress_panel.gd" id="22_kgcvs"]
+[ext_resource type="Script" uid="uid://dqco1qbyidcyi" path="res://menu/actions/delete/delete_handler.gd" id="21_6r0s8"]
+[ext_resource type="Script" uid="uid://djoxptkg6rl6l" path="res://menu/actions/delete/delete_progress_panel.gd" id="22_kgcvs"]
 
 [sub_resource type="GDScript" id="GDScript_u7u8r"]
 resource_name = "VersionNumberSetter"
@@ -218,8 +218,7 @@ stretch_mode = 5
 layout_mode = 2
 theme = ExtResource("1_ti7wl")
 theme_override_font_sizes/font_size = 25
-text = "Export
-"
+text = "Export"
 horizontal_alignment = 1
 vertical_alignment = 1
 
