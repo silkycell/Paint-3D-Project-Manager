@@ -9,7 +9,7 @@ class_name PopupBox
 		title_label.text = value
 		title = value
 
-@export var text:String = "Text":
+@export_multiline var text:String = "Text":
 	set(value):
 		text_label.text = value
 		text = value
