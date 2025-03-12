@@ -11,12 +11,12 @@ config_version=5
 [application]
 
 config/name="Paint 3D Project Manager"
-config/version="1.0.3"
+config/version="1.0.4"
 run/main_scene="res://menu/projects/projects_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
-boot_splash/image="res://splash.png"
 boot_splash/fullsize=false
+boot_splash/image="res://splash.png"
 config/icon="res://icon.png"
 
 [autoload]
