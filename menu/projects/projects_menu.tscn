@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bggxtdevj1r6v"]
+[gd_scene load_steps=29 format=3 uid="uid://bggxtdevj1r6v"]
 
 [ext_resource type="Theme" uid="uid://eno3kw6ga4uf" path="res://menu/menu_theme.tres" id="1_ti7wl"]
 [ext_resource type="Script" uid="uid://di2dpm1ajnutw" path="res://menu/projects/projects_list.gd" id="1_wdfsu"]
@@ -27,8 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://dychp88l7omd3" path="res://menu/assets/icons/settings_icon.svg" id="19_yudf6"]
 [ext_resource type="Script" uid="uid://dqco1qbyidcyi" path="res://menu/actions/delete/delete_handler.gd" id="21_6r0s8"]
 [ext_resource type="Script" uid="uid://djoxptkg6rl6l" path="res://menu/actions/delete/delete_progress_panel.gd" id="22_kgcvs"]
-[ext_resource type="Script" path="res://menu/projects/tos.gd" id="28_sr2tt"]
-[ext_resource type="VideoStream" uid="uid://lbjnqh4cvgb8" path="res://output.ogv" id="29_ljyb0"]
 
 [sub_resource type="GDScript" id="GDScript_u7u8r"]
 resource_name = "VersionNumberSetter"
@@ -614,48 +612,6 @@ visible = false
 layout_mode = 1
 script = ExtResource("22_kgcvs")
 parent_action = NodePath("..")
-
-[node name="Sanjay" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("28_sr2tt")
-
-[node name="BG" type="ColorRect" parent="Sanjay"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.572549)
-
-[node name="TOSPopup" parent="Sanjay" instance=ExtResource("17_j3wdq")]
-layout_mode = 1
-offset_top = -132.0
-offset_bottom = 145.0
-title = ""
-text = ""
-button_options = Array[String](["Ok"])
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Sanjay/TOSPopup"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 42.0
-offset_top = 12.0
-offset_right = -52.0
-offset_bottom = -109.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("29_ljyb0")
-autoplay = true
-expand = true
-loop = true
 
 [connection signal="text_changed" from="MainMenu/ProjectsList/SearchBar" to="MainMenu/ProjectsList/SearchBar" method="_on_text_changed"]
 [connection signal="toggled" from="SettingsContainer/SettingsButton" to="SettingsContainer/SettingsButton" method="_on_toggled"]
