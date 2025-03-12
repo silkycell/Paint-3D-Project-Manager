@@ -1,7 +1,7 @@
 extends Button
 
 const TEMPLATE_TEXT:String = "v%s is avaliable to download\nClick here to open the download page"
-const REPO = 'silkycell/Paint-3D-Project-Manager'
+const REPO = 'KAUTARUMA/Paint-3D-Project-Manager'
 
 @onready var info = $Info
 @onready var http_request = $HTTPRequest
